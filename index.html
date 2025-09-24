@@ -3,792 +3,631 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مطعم جوكر</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>DREAM SHOPPING - شركة الدفع الإلكتروني والشحن</title>
     <style>
         :root {
-            --primary-color: #ff6b6b;
-            --secondary-color: #4ecdc4;
-            --dark-color: #292f36;
-            --light-color: #f7fff7;
+            --primary-color: #0078B7;
+            --primary-dark: #005a87;
+            --primary-light: #4a9fd5;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
         }
-
-        .ltr {
-            direction: ltr;
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        .night-mode {
-            background-color: #1a1a1a;
-            color: #f0f0f0;
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
         }
-
-        .night-mode .bg-white {
-            background-color: #2d2d2d !important;
-            color: #f0f0f0 !important;
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
-
-        .night-mode .text-gray-800 {
-            color: #f0f0f0 !important;
-        }
-
-        .night-mode .text-gray-600 {
-            color: #d1d1d1 !important;
-        }
-
-        .night-mode .border-gray-200 {
-            border-color: #444 !important;
-        }
-
-        .food-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .control-panel {
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            width: 100%;
+            top: 0;
             z-index: 1000;
-            background-color: white;
-            padding: 10px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #333;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 120, 183, 0.8), rgba(0, 120, 183, 0.9)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--white);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-
-        .night-mode .control-panel {
-            background-color: #2d2d2d;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
-
-        .cart-panel {
-            position: fixed;
-            top: 80px;
-            left: 20px;
-            z-index: 1000;
-            background-color: white;
+        
+        /* Services Section */
+        .services {
+            background-color: var(--light-bg);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* Payment Methods */
+        .payment-methods {
+            text-align: center;
+        }
+        
+        .payment-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .payment-logo {
+            background-color: var(--white);
             padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            max-height: 70vh;
-            overflow-y: auto;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            width: 120px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
-        .night-mode .cart-panel {
-            background-color: #2d2d2d;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        
+        .payment-logo img {
+            max-width: 100%;
+            max-height: 100%;
         }
-
+        
+        /* App Section */
+        .app-section {
+            background-color: var(--light-bg);
+        }
+        
+        .app-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .app-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .app-image img {
+            max-width: 300px;
+            height: auto;
+        }
+        
+        .app-text {
+            flex: 1;
+        }
+        
+        .app-download {
+            margin-top: 30px;
+        }
+        
+        .app-download a {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: var(--primary-light);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-light);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: var(--white);
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+            color: #bbb;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .menu-item {
+            .header-content {
                 flex-direction: column;
-            }
-            
-            .menu-text {
                 text-align: center;
-                margin-top: 10px;
             }
             
-            .language-switcher {
+            nav ul {
+                margin-top: 15px;
                 flex-direction: column;
-                gap: 5px;
             }
-
-            .cart-panel {
-                width: 90%;
-                left: 5%;
-                top: 100px;
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .about-content, .app-content {
+                flex-direction: column;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
             }
         }
     </style>
 </head>
-<body class="bg-gray-100 font-sans transition-colors duration-300">
-    <!-- Control Panel -->
-    <div class="control-panel">
-        <div class="flex items-center space-x-4 language-switcher">
-            <button onclick="toggleLanguage()" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
-                <i class="fas fa-language mr-1"></i> 
-                <span id="lang-btn">English</span>
-            </button>
-            <button onclick="toggleNightMode()" class="px-3 py-1 bg-gray-800 text-white rounded hover:bg-gray-700 transition">
-                <i class="fas fa-moon mr-1"></i> 
-                <span id="night-btn">وضع الليل</span>
-            </button>
-        </div>
-    </div>
-
-    <!-- Cart Panel -->
-    <div id="cartPanel" class="cart-panel hidden">
-        <div class="flex justify-between items-center mb-4">
-            <h3 class="text-xl font-bold text-gray-800" data-en="Your Cart" data-ar="سلة المشتريات">سلة المشتريات</h3>
-            <button onclick="closeCart()" class="text-gray-500 hover:text-red-500">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <div id="cartItems" class="mb-4">
-            <!-- Cart items will be added here dynamically -->
-            <p class="text-gray-500 text-center py-4" data-en="Your cart is empty" data-ar="سلة المشتريات فارغة">سلة المشتريات فارغة</p>
-        </div>
-        
-        <div class="border-t pt-3">
-            <div class="flex justify-between mb-2">
-                <span class="font-semibold" data-en="Total" data-ar="الإجمالي">الإجمالي:</span>
-                <span id="cartTotal" class="font-bold">0 ج.م</span>
-            </div>
-            <button onclick="checkout()" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition" data-en="Checkout via WhatsApp" data-ar="إتمام الطلب عبر واتساب">
-                <i class="fab fa-whatsapp mr-2"></i> إتمام الطلب عبر واتساب
-            </button>
-        </div>
-    </div>
-
-    <!-- Cart Button -->
-    <button onclick="toggleCart()" class="fixed top-20 left-5 z-50 bg-red-500 text-white p-3 rounded-full shadow-lg hover:bg-red-600 transition">
-        <i class="fas fa-shopping-cart"></i>
-        <span id="cartCount" class="absolute -top-2 -right-2 bg-yellow-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">0</span>
-    </button>
-
+<body>
     <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center text-white font-bold text-xl ml-3">
-                    ج
-                </div>
-                <h1 class="text-2xl font-bold text-gray-800">مطعم جوكر</h1>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">DREAM <span>SHOPPING</span></a>
+                <div class="mobile-menu">☰</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#payment">طرق الدفع</a></li>
+                        <li><a href="#app">التطبيق</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </nav>
             </div>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="text-gray-800 hover:text-red-500 transition" data-en="Home" data-ar="الرئيسية">الرئيسية</a>
-                <a href="#menu" class="text-gray-800 hover:text-red-500 transition" data-en="Menu" data-ar="القائمة">القائمة</a>
-                <a href="#offers" class="text-gray-800 hover:text-red-500 transition" data-en="Offers" data-ar="العروض">العروض</a>
-                <a href="#about" class="text-gray-800 hover:text-red-500 transition" data-en="About" data-ar="من نحن">من نحن</a>
-                <a href="#contact" class="text-gray-800 hover:text-red-500 transition" data-en="Contact" data-ar="اتصل بنا">اتصل بنا</a>
-            </nav>
-            <button class="md:hidden text-gray-800" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
-            <a href="#home" class="block py-2 text-gray-800 hover:text-red-500 transition" data-en="Home" data-ar="الرئيسية">الرئيسية</a>
-            <a href="#menu" class="block py-2 text-gray-800 hover:text-red-500 transition" data-en="Menu" data-ar="القائمة">القائمة</a>
-            <a href="#offers" class="block py-2 text-gray-800 hover:text-red-500 transition" data-en="Offers" data-ar="العروض">العروض</a>
-            <a href="#about" class="block py-2 text-gray-800 hover:text-red-500 transition" data-en="About" data-ar="من نحن">من نحن</a>
-            <a href="#contact" class="block py-2 text-gray-800 hover:text-red-500 transition" data-en="Contact" data-ar="اتصل بنا">اتصل بنا</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="py-20 bg-gradient-to-r from-red-500 to-yellow-500 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl md:text-6xl font-bold mb-6" data-en="Delicious Food Delivered To Your Door" data-ar="طعام لذيذ يصل إلى باب منزلك">طعام لذيذ يصل إلى باب منزلك</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto" data-en="Order your favorite meals from our extensive menu and enjoy a quick delivery" data-ar="اطلب وجباتك المفضلة من قائمتنا الواسعة واستمتع بتوصيل سريع">اطلب وجباتك المفضلة من قائمتنا الواسعة واستمتع بتوصيل سريع</p>
-            <button class="bg-white text-red-500 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition" data-en="Order Now" data-ar="اطلب الآن">اطلب الآن</button>
-        </div>
-    </section>
-
-    <!-- Food Menu Section -->
-    <section id="menu" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800" data-en="Our Menu" data-ar="قائمتنا">قائمتنا</h2>
-            
-            <div class="mb-16">
-                <h3 class="text-2xl font-semibold mb-8 text-gray-800 border-b pb-2" data-en="Food" data-ar="الطعام">الطعام</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Food Item 1 -->
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md food-card transition duration-300">
-                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Salad" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2 text-gray-800" data-en="Greek Salad" data-ar="سلطة يونانية">سلطة يونانية</h4>
-                            <p class="text-gray-600 mb-4" data-en="Fresh vegetables with feta cheese and olives" data-ar="خضروات طازجة مع جبنة الفيتا والزيتون">خضروات طازجة مع جبنة الفيتا والزيتون</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-lg font-bold text-red-500">49 ج.م</span>
-                                <button onclick="addToCart('سلطة يونانية', 49)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Add to Cart" data-ar="أضف إلى السلة">أضف إلى السلة</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Food Item 2 -->
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md food-card transition duration-300">
-                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Pizza" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2 text-gray-800" data-en="Margherita Pizza" data-ar="بيتزا مارغريتا">بيتزا مارغريتا</h4>
-                            <p class="text-gray-600 mb-4" data-en="Classic pizza with tomato sauce, mozzarella and basil" data-ar="بيتزا كلاسيكية مع صلصة الطماطم والموزاريلا والريحان">بيتزا كلاسيكية مع صلصة الطماطم والموزاريلا والريحان</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-lg font-bold text-red-500">65 ج.م</span>
-                                <button onclick="addToCart('بيتزا مارغريتا', 65)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Add to Cart" data-ar="أضف إلى السلة">أضف إلى السلة</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Food Item 3 -->
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md food-card transition duration-300">
-                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Burger" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2 text-gray-800" data-en="Joker Special Burger" data-ar="برجر جوكر الخاص">برجر جوكر الخاص</h4>
-                            <p class="text-gray-600 mb-4" data-en="Double beef patty with special sauce and crispy onions" data-ar="برجر لحم مزدوج مع صلصة خاصة وبصل مقرمش">برجر لحم مزدوج مع صلصة خاصة وبصل مقرمش</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-lg font-bold text-red-500">59 ج.م</span>
-                                <button onclick="addToCart('برجر جوكر الخاص', 59)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Add to Cart" data-ar="أضف إلى السلة">أضف إلى السلة</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Food Item 4 -->
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md food-card transition duration-300">
-                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Pasta" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2 text-gray-800" data-en="Creamy Pasta" data-ar="باستا كريمية">باستا كريمية</h4>
-                            <p class="text-gray-600 mb-4" data-en="Penne pasta with creamy mushroom sauce" data-ar="بيني باستا مع صلصة المشروم الكريمية">بيني باستا مع صلصة المشروم الكريمية</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-lg font-bold text-red-500">55 ج.م</span>
-                                <button onclick="addToCart('باستا كريمية', 55)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Add to Cart" data-ar="أضف إلى السلة">أضف إلى السلة</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Food Item 5 -->
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md food-card transition duration-300">
-                        <img src="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTV8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Steak" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2 text-gray-800" data-en="Grilled Steak" data-ar="ستيك مشوي">ستيك مشوي</h4>
-                            <p class="text-gray-600 mb-4" data-en="Juicy steak with roasted vegetables and mashed potatoes" data-ar="ستيك عصير مع خضروات مشوية وبطاطس مهروسة">ستيك عصير مع خضروات مشوية وبطاطس مهروسة</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-lg font-bold text-red-500">95 ج.م</span>
-                                <button onclick="addToCart('ستيك مشوي', 95)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Add to Cart" data-ar="أضف إلى السلة">أضف إلى السلة</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Food Item 6 -->
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md food-card transition duration-300">
-                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTh8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Sushi" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2 text-gray-800" data-en="Sushi Platter" data-ar="طبق سوشي">طبق سوشي</h4>
-                            <p class="text-gray-600 mb-4" data-en="Assorted sushi with wasabi, ginger and soy sauce" data-ar="سوشي متنوع مع وسابي، زنجبيل وصوص الصويا">سوشي متنوع مع وسابي، زنجبيل وصوص الصويا</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-lg font-bold text-red-500">75 ج.م</span>
-                                <button onclick="addToCart('طبق سوشي', 75)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Add to Cart" data-ar="أضف إلى السلة">أضف إلى السلة</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Beverages Section -->
-            <div>
-                <h3 class="text-2xl font-semibold mb-8 text-gray-800 border-b pb-2" data-en="Beverages" data-ar="المشروبات">المشروبات</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Beverage 1 -->
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md food-card transition duration-300">
-                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjB8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Coffee" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2 text-gray-800" data-en="Special Coffee" data-ar="قهوة خاصة">قهوة خاصة</h4>
-                            <p class="text-gray-600 mb-4" data-en="Our signature coffee blend with a hint of cinnamon" data-ar="مزيج القهوة الخاص بنا مع لمسة من القرفة">مزيج القهوة الخاص بنا مع لمسة من القرفة</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-lg font-bold text-red-500">18 ج.م</span>
-                                <button onclick="addToCart('قهوة خاصة', 18)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Add to Cart" data-ar="أضف إلى السلة">أضف إلى السلة</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Beverage 2 -->
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md food-card transition duration-300">
-                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjV8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Smoothie" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2 text-gray-800" data-en="Tropical Smoothie" data-ar="سموثي استوائي">سموثي استوائي</h4>
-                            <p class="text-gray-600 mb-4" data-en="Blend of mango, pineapple and banana" data-ar="مزيج من المانجو والأناناس والموز">مزيج من المانجو والأناناس والموز</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-lg font-bold text-red-500">25 ج.م</span>
-                                <button onclick="addToCart('سموثي استوائي', 25)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Add to Cart" data-ar="أضف إلى السلة">أضف إلى السلة</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Beverage 3 -->
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md food-card transition duration-300">
-                        <img src="https://images.unsplash.com/photo-1566733971016-5f49fb0d9b0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjZ8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Lemonade" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2 text-gray-800" data-en="Fresh Lemonade" data-ar="ليمونادة طازجة">ليمونادة طازجة</h4>
-                            <p class="text-gray-600 mb-4" data-en="Homemade lemonade with mint leaves" data-ar="ليمونادة منزلية مع أوراق النعناع">ليمونادة منزلية مع أوراق النعناع</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-lg font-bold text-red-500">15 ج.م</span>
-                                <button onclick="addToCart('ليمونادة طازجة', 15)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Add to Cart" data-ar="أضف إلى السلة">أضف إلى السلة</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Offers Section -->
-    <section id="offers" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800" data-en="Special Offers" data-ar="عروض خاصة">عروض خاصة</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Offer 1 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row">
-                    <div class="md:w-1/3">
-                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MzB8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Pizza Offer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 md:w-2/3">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800" data-en="Family Pizza Deal" data-ar="عرض بيتزا العائلة">عرض بيتزا العائلة</h3>
-                            <span class="bg-red-500 text-white px-2 py-1 rounded text-sm" data-en="30% OFF" data-ar="30% خصم">30% خصم</span>
-                        </div>
-                        <p class="text-gray-600 mb-4" data-en="Two large pizzas with 4 toppings of your choice and 2 drinks" data-ar="بيتزا كبيرتان مع 4 طبقات من اختيارك ومشروبان">بيتزا كبيرتان مع 4 طبقات من اختيارك ومشروبان</p>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="text-gray-500 line-through mr-2">150 ج.م</span>
-                                <span class="text-xl font-bold text-red-500">105 ج.م</span>
-                            </div>
-                            <button onclick="addToCart('عرض بيتزا العائلة', 105)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Order Now" data-ar="اطلب الآن">اطلب الآن</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Offer 2 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row">
-                    <div class="md:w-1/3">
-                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MzF8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Burger Offer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 md:w-2/3">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800" data-en="Burger Combo" data-ar="كومبو برجر">كومبو برجر</h3>
-                            <span class="bg-red-500 text-white px-2 py-1 rounded text-sm" data-en="20% OFF" data-ar="20% خصم">20% خصم</span>
-                        </div>
-                        <p class="text-gray-600 mb-4" data-en="Two Joker Special Burgers with fries and two drinks" data-ar="برجران جوكر خاص مع بطاطس ومشروبان">برجران جوكر خاص مع بطاطس ومشروبان</p>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="text-gray-500 line-through mr-2">120 ج.م</span>
-                                <span class="text-xl font-bold text-red-500">96 ج.م</span>
-                            </div>
-                            <button onclick="addToCart('كومبو برجر', 96)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Order Now" data-ar="اطلب الآن">اطلب الآن</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Offer 3 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row">
-                    <div class="md:w-1/3">
-                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MzR8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Breakfast Offer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 md:w-2/3">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800" data-en="Weekend Breakfast" data-ar="إفطار نهاية الأسبوع">إفطار نهاية الأسبوع</h3>
-                            <span class="bg-red-500 text-white px-2 py-1 rounded text-sm" data-en="15% OFF" data-ar="15% خصم">15% خصم</span>
-                        </div>
-                        <p class="text-gray-600 mb-4" data-en="Pancakes with maple syrup, fresh fruits and coffee or juice" data-ar="بانكيك مع شراب القيقب، فواكه طازجة وقهوة أو عصير">بانكيك مع شراب القيقب، فواكه طازجة وقهوة أو عصير</p>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="text-gray-500 line-through mr-2">75 ج.م</span>
-                                <span class="text-xl font-bold text-red-500">64 ج.م</span>
-                            </div>
-                            <button onclick="addToCart('إفطار نهاية الأسبوع', 64)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Order Now" data-ar="اطلب الآن">اطلب الآن</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Offer 4 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row">
-                    <div class="md:w-1/3">
-                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MzZ8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Dessert Offer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 md:w-2/3">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800" data-en="Sweet Combo" data-ar="كومبو حلو">كومبو حلو</h3>
-                            <span class="bg-red-500 text-white px-2 py-1 rounded text-sm" data-en="25% OFF" data-ar="25% خصم">25% خصم</span>
-                        </div>
-                        <p class="text-gray-600 mb-4" data-en="Chocolate cake, ice cream and coffee for two" data-ar="كيك شوكولاتة، آيس كريم وقهوة لشخصين">كيك شوكولاتة، آيس كريم وقهوة لشخصين</p>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="text-gray-500 line-through mr-2">100 ج.م</span>
-                                <span class="text-xl font-bold text-red-500">75 ج.م</span>
-                            </div>
-                            <button onclick="addToCart('كومبو حلو', 75)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" data-en="Order Now" data-ar="اطلب الآن">اطلب الآن</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>DREAM SHOPPING - بوابة الدفع الإلكتروني والشحن العالمية</h1>
+            <p>نقدم حلول دفع إلكتروني آمنة وسريعة مع خدمة شحن الألعاب لجميع دول العالم. استمتع بتجربة تسوق رقمية متكاملة مع دعم جميع طرق الدفع المحلية والعالمية.</p>
+            <a href="#services" class="btn">اكتشف خدماتنا</a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800" data-en="About Joker Restaurant" data-ar="عن مطعم جوكر">عن مطعم جوكر</h2>
-            
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NDB8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Restaurant Interior" class="w-full rounded-lg shadow-lg">
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>من نحن</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>DREAM SHOPPING - رؤيتنا ورسالتنا</h3>
+                    <p>نحن شركة رائدة في مجال الدفع الإلكتروني وشحن الألعاب، نقدم حلولاً متكاملة لعملائنا في جميع أنحاء العالم. تأسست شركتنا برؤية واضحة وهي تبسيط عمليات الدفع والشحن الرقمية.</p>
+                    <p>نفخر بتقديم خدماتنا لأكثر من 50 دولة حول العالم، مع دعم جميع طرق الدفع المحلية والعالمية الشهيرة. فريقنا من المحترفين يعمل باستمرار على تطوير وتحسين خدماتنا لتلبية احتياجات عملائنا.</p>
+                    <p>نحن نؤمن بأن تجربة الدفع والشحن يجب أن تكون سلسة وآمنة، وهذا exactly ما نوفره لعملائنا الكرام.</p>
+                    <a href="#contact" class="btn btn-primary">تواصل معنا</a>
                 </div>
-                <div class="md:w-1/2">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800" data-en="Our Story" data-ar="قصتنا">قصتنا</h3>
-                    <p class="text-gray-600 mb-4" data-en="Founded in 2010, Joker Restaurant has been serving delicious meals with a smile for over a decade. Our mission is to provide high-quality food at affordable prices while maintaining excellent customer service." data-ar="تأسس مطعم جوكر في عام 2010، وقد قدمنا وجبات لذيذة بابتسامة لأكثر من عقد من الزمان. مهمتنا هي تقديم طعام عالي الجودة بأسعار معقولة مع الحفاظ على خدمة عملاء ممتازة.">تأسس مطعم جوكر في عام 2010، وقد قدمنا وجبات لذيذة بابتسامة لأكثر من عقد من الزمان. مهمتنا هي تقديم طعام عالي الجودة بأسعار معقولة مع الحفاظ على خدمة عملاء ممتازة.</p>
-                    
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800" data-en="Our Chefs" data-ar="طهاةنا">طهاةنا</h3>
-                    <p class="text-gray-600 mb-4" data-en="Our team of professional chefs brings international experience and creativity to every dish. We use only the freshest ingredients to ensure the best taste in every bite." data-ar="يقدم فريق الطهاة المحترفين لدينا خبرة دولية وإبداعًا في كل طبق. نستخدم فقط المكونات الطازجة لضمان أفضل مذاق في كل قضمة.">يقدم فريق الطهاة المحترفين لدينا خبرة دولية وإبداعًا في كل طبق. نستخدم فقط المكونات الطازجة لضمان أفضل مذاق في كل قضمة.</p>
-                    
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800" data-en="Our Promise" data-ar="وعدنا">وعدنا</h3>
-                    <p class="text-gray-600" data-en="We promise to deliver not just food, but an experience that will make you smile - just like our name suggests!" data-ar="نعدك بأننا لن نقدم لك الطعام فقط، ولكن تجربة ستجعلك تبتسم - تمامًا كما يوحي اسمنا!">نعدك بأننا لن نقدم لك الطعام فقط، ولكن تجربة ستجعلك تبتسم - تمامًا كما يوحي اسمنا!</p>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="شركة DREAM SHOPPING">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800" data-en="Contact Us" data-ar="اتصل بنا">اتصل بنا</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800" data-en="Get in Touch" data-ar="ابقى على تواصل">ابقى على تواصل</h3>
-                    
-                    <div class="mb-6">
-                        <div class="flex items-start mb-4">
-                            <i class="fas fa-map-marker-alt text-red-500 mt-1 mr-3"></i>
-                            <div>
-                                <h4 class="font-semibold text-gray-800" data-en="Address" data-ar="العنوان">العنوان</h4>
-                                <p class="text-gray-600" data-en="123 Restaurant Street, Food City" data-ar="123 شارع المطعم، مدينة الطعام">123 شارع المطعم، مدينة الطعام</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start mb-4">
-                            <i class="fas fa-phone-alt text-red-500 mt-1 mr-3"></i>
-                            <div>
-                                <h4 class="font-semibold text-gray-800" data-en="Phone" data-ar="الهاتف">الهاتف</h4>
-                                <p class="text-gray-600">+201090470326</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <i class="fas fa-envelope text-red-500 mt-1 mr-3"></i>
-                            <div>
-                                <h4 class="font-semibold text-gray-800" data-en="Email" data-ar="البريد الإلكتروني">البريد الإلكتروني</h4>
-                                <p class="text-gray-600">info@jokerrestaurant.com</p>
-                            </div>
-                        </div>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>خدماتنا</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💳</div>
+                    <h3>الدفع الإلكتروني</h3>
+                    <p>نقدم حلول دفع إلكتروني آمنة وسريعة مع تشفير متقدم لحماية بياناتك المالية. ندعم جميع طرق الدفع المحلية والعالمية.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💳</div>
+                    <h3>شحن الألعاب</h3>
+                    <p>خدمة شحن سريعة وموثوقة للألعاب لجميع دول العالم. نضمن وصول منتجاتك في الوقت المحدد وبأفضل الأسعار.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌍</div>
+                    <h3>خدمة عالمية</h3>
+                    <p>نخدم عملاءنا في أكثر من 50 دولة حول العالم. نقدم دعماً بلغات متعددة وندعم العملات المختلفة.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>أمان متكامل</h3>
+                    <p>نظام أمان متكامل يحمي معاملاتك وبياناتك. نستخدم أحدث تقنيات التشفير والحماية من الاحتيال.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>تطبيق جوال</h3>
+                    <p>تطبيق أندرويد متكامل يمكنك من إدارة مدفوعاتك ومتابعة شحناتك من أي مكان وفي أي وقت.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>ضمان الخدمة</h3>
+                    <p>نضمن لك تجربة دفع وشحن سلسة مع فريق دعم فني متاح على مدار الساعة لمساعدتك في أي استفسار.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods Section -->
+    <section id="payment">
+        <div class="container">
+            <div class="section-title">
+                <h2>طرق الدفع المدعومة</h2>
+            </div>
+            <div class="payment-methods">
+                <p>ندعم جميع طرق الدفع المحلية والعالمية الشهيرة لتوفير أقصى درجات الراحة لأعضائنا</p>
+                <div class="payment-logos">
+                    <div class="payment-logo">
+                        <span style="font-weight: bold; color: #e60023;">Vodafone Cash</span>
                     </div>
-                    
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800" data-en="Opening Hours" data-ar="ساعات العمل">ساعات العمل</h3>
-                    <div class="bg-white p-4 rounded-lg shadow">
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-800" data-en="Monday - Friday" data-ar="الإثنين - الجمعة">الإثنين - الجمعة</span>
-                            <span class="text-gray-600">10:00 ص - 10:00 م</span>
-                        </div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-800" data-en="Saturday" data-ar="السبت">السبت</span>
-                            <span class="text-gray-600">11:00 ص - 11:00 م</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-800" data-en="Sunday" data-ar="الأحد">الأحد</span>
-                            <span class="text-gray-600">11:00 ص - 9:00 م</span>
-                        </div>
+                    <div class="payment-logo">
+                        <span style="font-weight: bold; color: #0052FF;">InstaPay</span>
+                    </div>
+                    <div class="payment-logo">
+                        <span style="font-weight: bold; color: #003087;">PayPal</span>
+                    </div>
+                    <div class="payment-logo">
+                        <span style="font-weight: bold; color: #00C806;">Skrill</span>
+                    </div>
+                    <div class="payment-logo">
+                        <span style="font-weight: bold; color: #F0B90B;">Binance</span>
                     </div>
                 </div>
-                
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800" data-en="Send Us a Message" data-ar="أرسل لنا رسالة">أرسل لنا رسالة</h3>
-                    <form class="bg-white p-6 rounded-lg shadow">
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 mb-2" data-en="Name" data-ar="الاسم">الاسم</label>
-                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500">
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-gray-700 mb-2" data-en="Email" data-ar="البريد الإلكتروني">البريد الإلكتروني</label>
-                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500">
-                        </div>
-                        <div class="mb-4">
-                            <label for="message" class="block text-gray-700 mb-2" data-en="Message" data-ar="الرسالة">الرسالة</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
-                        </div>
-                        <button type="submit" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition" data-en="Send Message" data-ar="إرسال الرسالة">إرسال الرسالة</button>
-                    </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Section -->
+    <section class="app-section" id="app">
+        <div class="container">
+            <div class="section-title">
+                <h2>تطبيق DREAM SHOPPING</h2>
+            </div>
+            <div class="app-content">
+                <div class="app-image">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تطبيق DREAM SHOPPING">
+                </div>
+                <div class="app-text">
+                    <h3>حمّل تطبيقنا الآن</h3>
+                    <p>تمتع بتجربة دفع وشحن سلسة مع تطبيق DREAM SHOPPING المخصص لهواتف الأندرويد. يمكنك من خلال التطبيق:</p>
+                    <ul>
+                        <li>إدارة جميع معاملاتك المالية بسهولة</li>
+                        <li>متابعة حالة شحناتك في الوقت الفعلي</li>
+                        <li>استخدام جميع طرق الدفع المدعومة</li>
+                        <li>الحصول على دعم فني مباشر</li>
+                        <li>الاستفادة من العروض الحصرية لأعضاء التطبيق</li>
+                    </ul>
+                    <div class="app-download">
+                        <a href="https://apk.e-droid.net/apk/app2305745-nf2mxh.apk?v=44" class="btn btn-primary">حمّل التطبيق الآن</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4" data-en="Joker Restaurant" data-ar="مطعم جوكر">مطعم جوكر</h3>
-                    <p class="text-gray-400" data-en="Delicious food delivered to your door" data-ar="طعام لذيذ يصل إلى باب منزلك">طعام لذيذ يصل إلى باب منزلك</p>
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DREAM SHOPPING</h3>
+                    <p>شركة رائدة في مجال الدفع الإلكتروني وشحن الألعاب لجميع دول العالم. نقدم حلولاً متكاملة وآمنة لعملائنا.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1CsrZtmKKK/"><i>f</i></a>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4" data-en="Quick Links" data-ar="روابط سريعة">روابط سريعة</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition" data-en="Home" data-ar="الرئيسية">الرئيسية</a></li>
-                        <li><a href="#menu" class="text-gray-400 hover:text-white transition" data-en="Menu" data-ar="القائمة">القائمة</a></li>
-                        <li><a href="#offers" class="text-gray-400 hover:text-white transition" data-en="Offers" data-ar="العروض">العروض</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition" data-en="About" data-ar="من نحن">من نحن</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition" data-en="Contact" data-ar="اتصل بنا">اتصل بنا</a></li>
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#payment">طرق الدفع</a></li>
+                        <li><a href="#app">التطبيق</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4" data-en="Follow Us" data-ar="تابعنا">تابعنا</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
-                    </div>
+                <div class="footer-column">
+                    <h3>خدماتنا</h3>
+                    <ul>
+                        <li><a href="#services">الدفع الإلكتروني</a></li>
+                        <li><a href="#services">شحن الألعاب</a></li>
+                        <li><a href="https://wa.me/message/ZAMCJ2OF2SB4A1">الدعم الفني</a></li>
+                        <a href="#about">الأسئلة الشائعة</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                    </ul>
                 </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4" data-en="Newsletter" data-ar="النشرة الإخبارية">النشرة الإخبارية</h4>
-                    <p class="text-gray-400 mb-2" data-en="Subscribe to our newsletter for updates" data-ar="اشترك في نشرتنا الإخبارية للحصول على التحديثات">اشترك في نشرتنا الإخبارية للحصول على التحديثات</p>
-                    <div class="flex">
-                        <input type="email" placeholder="بريدك الإلكتروني" class="px-4 py-2 w-full rounded-l focus:outline-none text-gray-800" data-en="Your email" data-ar="بريدك الإلكتروني">
-                        <button class="bg-red-500 px-4 py-2 rounded-r hover:bg-red-600 transition" data-en="Subscribe" data-ar="اشتراك">اشتراك</button>
-                    </div>
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li>البريد الإلكتروني: helpapersonality@gmail.com</li>
+                        <li>الهاتف: +01090470326</li>
+                    </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
-                <p data-en="&copy; 2023 Joker Restaurant. All rights reserved." data-ar="&copy; 2023 مطعم جوكر. جميع الحقوق محفوظة.">&copy; 2023 مطعم جوكر. جميع الحقوق محفوظة.</p>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 DREAM SHOPPING</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Language toggle functionality
-        let currentLanguage = 'ar';
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
         
-        function toggleLanguage() {
-            currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
-            updateLanguage();
-        }
-        
-        function updateLanguage() {
-            // Update direction
-            if (currentLanguage === 'ar') {
-                document.body.classList.add('rtl');
-                document.body.setAttribute('dir', 'rtl');
-                document.body.setAttribute('lang', 'ar');
-            } else {
-                document.body.classList.remove('rtl');
-                document.body.setAttribute('dir', 'ltr');
-                document.body.setAttribute('lang', 'en');
-            }
-            
-            // Update language button text
-            document.getElementById('lang-btn').textContent = currentLanguage === 'en' ? 'العربية' : 'English';
-            
-            // Update night mode button text
-            if (nightMode) {
-                document.getElementById('night-btn').textContent = currentLanguage === 'en' ? 'Day Mode' : 'وضع النهار';
-            } else {
-                document.getElementById('night-btn').textContent = currentLanguage === 'en' ? 'Night Mode' : 'وضع الليل';
-            }
-            
-            // Update all elements with data-en and data-ar attributes
-            const elements = document.querySelectorAll('[data-en], [data-ar]');
-            elements.forEach(element => {
-                if (element.hasAttribute(`data-${currentLanguage}`)) {
-                    const text = element.getAttribute(`data-${currentLanguage}`);
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.setAttribute('placeholder', text);
-                    } else {
-                        element.textContent = text;
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    if(document.querySelector('nav ul').classList.contains('active')) {
+                        document.querySelector('nav ul').classList.remove('active');
                     }
                 }
             });
-            
-            // Update cart items if any
-            updateCartDisplay();
-        }
+        });
         
-        // Night mode toggle functionality
-        let nightMode = false;
-        
-        function toggleNightMode() {
-            nightMode = !nightMode;
-            if (nightMode) {
-                document.body.classList.add('night-mode');
-                document.getElementById('night-btn').textContent = currentLanguage === 'en' ? 'Day Mode' : 'وضع النهار';
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
             } else {
-                document.body.classList.remove('night-mode');
-                document.getElementById('night-btn').textContent = currentLanguage === 'en' ? 'Night Mode' : 'وضع الليل';
+                header.style.backgroundColor = 'var(--white)';
             }
-        }
-        
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('hidden');
-        }
-        
-        // Cart functionality
-        let cart = [];
-        
-        function toggleCart() {
-            const cartPanel = document.getElementById('cartPanel');
-            cartPanel.classList.toggle('hidden');
-        }
-        
-        function closeCart() {
-            const cartPanel = document.getElementById('cartPanel');
-            cartPanel.classList.add('hidden');
-        }
-        
-        function addToCart(name, price) {
-            // Check if item already exists in cart
-            const existingItem = cart.find(item => item.name === name);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    quantity: 1
-                });
-            }
-            
-            updateCartDisplay();
-            
-            // Show cart panel if it's hidden
-            const cartPanel = document.getElementById('cartPanel');
-            if (cartPanel.classList.contains('hidden')) {
-                cartPanel.classList.remove('hidden');
-            }
-            
-            // Show success message
-            alert(currentLanguage === 'en' ? `${name} has been added to your cart!` : `تم إضافة ${name} إلى سلة المشتريات!`);
-        }
-        
-        function updateCartDisplay() {
-            const cartItemsContainer = document.getElementById('cartItems');
-            const cartCount = document.getElementById('cartCount');
-            const cartTotal = document.getElementById('cartTotal');
-            
-            // Update cart count
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
-            
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `<p class="text-gray-500 text-center py-4" data-en="Your cart is empty" data-ar="سلة المشتريات فارغة">${currentLanguage === 'en' ? 'Your cart is empty' : 'سلة المشتريات فارغة'}</p>`;
-                cartTotal.textContent = '0 ج.م';
-                return;
-            }
-            
-            // Calculate total
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            cartTotal.textContent = `${total} ج.م`;
-            
-            // Update cart items
-            cartItemsContainer.innerHTML = '';
-            cart.forEach((item, index) => {
-                const itemElement = document.createElement('div');
-                itemElement.className = 'flex justify-between items-center py-2 border-b';
-                itemElement.innerHTML = `
-                    <div>
-                        <h4 class="font-medium">${item.name}</h4>
-                        <div class="flex items-center mt-1">
-                            <button onclick="updateQuantity(${index}, -1)" class="text-gray-500 hover:text-red-500 w-6 h-6 flex items-center justify-center border rounded">
-                                <i class="fas fa-minus text-xs"></i>
-                            </button>
-                            <span class="mx-2">${item.quantity}</span>
-                            <button onclick="updateQuantity(${index}, 1)" class="text-gray-500 hover:text-red-500 w-6 h-6 flex items-center justify-center border rounded">
-                                <i class="fas fa-plus text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                        <span class="block">${item.price * item.quantity} ج.م</span>
-                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 text-sm mt-1">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </div>
-                `;
-                cartItemsContainer.appendChild(itemElement);
-            });
-        }
-        
-        function updateQuantity(index, change) {
-            cart[index].quantity += change;
-            
-            if (cart[index].quantity <= 0) {
-                cart.splice(index, 1);
-            }
-            
-            updateCartDisplay();
-        }
-        
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartDisplay();
-        }
-        
-        function checkout() {
-            if (cart.length === 0) {
-                alert(currentLanguage === 'en' ? 'Your cart is empty!' : 'سلة المشتريات فارغة!');
-                return;
-            }
-            
-            // Prepare WhatsApp message
-            const phoneNumber = '+201090470326';
-            let message = currentLanguage === 'en' 
-                ? 'Hello, I would like to order:\n\n' 
-                : 'مرحبًا، أود طلب:\n\n';
-            
-            cart.forEach(item => {
-                message += `${item.name} - ${item.quantity} x ${item.price} ج.م = ${item.quantity * item.price} ج.م\n`;
-            });
-            
-            message += '\n';
-            message += currentLanguage === 'en' 
-                ? `Total: ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)} ج.م\n\n` 
-                : `الإجمالي: ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)} ج.م\n\n`;
-            
-            message += currentLanguage === 'en' 
-                ? 'Please confirm my order. Thank you!' 
-                : 'الرجاء تأكيد طلبي. شكرًا!';
-            
-            // Encode message for URL
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Open WhatsApp
-            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
-            
-            // Clear cart after checkout
-            cart = [];
-            updateCartDisplay();
-            closeCart();
-        }
-        
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            updateLanguage();
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Close mobile menu if open
-                        const mobileMenu = document.getElementById('mobileMenu');
-                        if (!mobileMenu.classList.contains('hidden')) {
-                            mobileMenu.classList.add('hidden');
-                        }
-                    }
-                });
-            });
         });
     </script>
 </body>
