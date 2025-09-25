@@ -12,6 +12,7 @@
             --primary-color: #0078B7;
             --primary-dark: #005a87;
             --primary-light: #4a9fd5;
+            --orange-color: #FFA500;
             --text-color: #333;
             --light-bg: #f9fbfd;
             --white: #ffffff;
@@ -42,11 +43,11 @@
             padding: 0 15px;
         }
 
-        /* Scroll Animation */
+        /* Enhanced Scroll Animation */
         .fade-in {
             opacity: 0;
-            transform: translateY(25px);
-            transition: var(--transition);
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         .fade-in.appear {
             opacity: 1;
@@ -74,7 +75,6 @@
         .logo {
             font-size: 26px;
             font-weight: 700;
-            color: var(--primary-color);
             text-decoration: none;
             z-index: 1001;
             display: flex;
@@ -91,8 +91,12 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
         
-        .logo span {
-            color: #222;
+        /* عكس ألوان اسم الموقع */
+        .logo .dream {
+            color: var(--primary-color);
+        }
+        .logo .shopping {
+            color: var(--orange-color);
         }
         
         nav ul {
@@ -552,6 +556,12 @@
             animation: float 2s infinite ease-in-out;
         }
 
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
         .whatsapp-float:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
@@ -688,6 +698,92 @@
                 font-size: 13px;
             }
         }
+
+        /* Improved Animations for Mobile */
+        @media (max-width: 768px) {
+            .service-card {
+                transform: translateY(0) !important;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .service-card:hover {
+                transform: translateY(-5px) !important;
+            }
+            
+            .about-image:hover, .app-image:hover {
+                transform: translateY(-5px) !important;
+            }
+            
+            .payment-logo:hover {
+                transform: translateY(-3px) scale(1.02) !important;
+            }
+            
+            .btn:hover {
+                transform: translateY(-3px) !important;
+            }
+            
+            .social-links a:hover {
+                transform: translateY(-2px) !important;
+            }
+            
+            /* Enhanced fade-in animation for mobile */
+            .fade-in {
+                transform: translateY(20px);
+                transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            }
+        }
+
+        /* Additional Smooth Animations */
+        .logo {
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .section-title h2 {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-title h2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: right 0.8s ease;
+        }
+        
+        .section-title h2:hover::before {
+            right: 100%;
+        }
+        
+        /* Enhanced Mobile Menu Animation */
+        nav {
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        
+        nav ul li {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        nav.active ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        nav.active ul li:nth-child(1) { transition-delay: 0.1s; }
+        nav.active ul li:nth-child(2) { transition-delay: 0.15s; }
+        nav.active ul li:nth-child(3) { transition-delay: 0.2s; }
+        nav.active ul li:nth-child(4) { transition-delay: 0.25s; }
+        nav.active ul li:nth-child(5) { transition-delay: 0.3s; }
+        nav.active ul li:nth-child(6) { transition-delay: 0.35s; }
     </style>
 </head>
 <body>
@@ -697,7 +793,7 @@
             <div class="header-content">
                 <a href="#" class="logo">
                     <img src="https://f.top4top.io/p_3555nyuxx1.png" alt="DREAM SHOPPING Logo" class="logo-img">
-                    SHOPPING <span>DREAM</span>
+                    <span class="dream">DREAM</span> <span class="shopping">SHOPPING</span>
                 </a>
                 <div class="mobile-menu">☰</div>
                 <nav>
@@ -907,7 +1003,9 @@
 
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/message/ZAMCJ2OF2SB4A1" class="whatsapp-float" target="_blank" aria-label="واتساب">
-        💬
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
         <div class="whatsapp-tooltip">تواصل معنا الآن</div>
     </a>
 
@@ -976,11 +1074,25 @@
                 }, 3000);
             }
         });
+
+        // Enhanced animations for mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add touch-friendly hover effects for mobile
+            if ('ontouchstart' in window) {
+                const serviceCards = document.querySelectorAll('.service-card');
+                serviceCards.forEach(card => {
+                    card.addEventListener('touchstart', function() {
+                        this.classList.add('hover-effect');
+                    });
+                    
+                    card.addEventListener('touchend', function() {
+                        setTimeout(() => {
+                            this.classList.remove('hover-effect');
+                        }, 300);
+                    });
+                });
+            }
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
