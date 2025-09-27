@@ -96,6 +96,7 @@
             font-size: 26px;
             cursor: pointer;
             color: var(--text-color);
+            margin-right: 10px;
         }
         /* Language Toggle */
         .lang-toggle {
@@ -106,6 +107,7 @@
             padding: 6px 10px;
             border-radius: 6px;
             transition: var(--transition);
+            margin-left: 10px;
         }
         .lang-toggle:hover {
             background-color: rgba(0, 120, 183, 0.08);
@@ -570,14 +572,11 @@
                 justify-content: space-between;
                 align-items: center;
             }
-            .header-content {
-                flex-direction: row-reverse;
-            }
             .mobile-menu {
                 display: block;
-                margin-right: 10px;
             }
             .lang-toggle {
+                margin-left: 0;
                 margin-right: 10px;
             }
             nav {
@@ -637,11 +636,6 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="lang-toggle">
-                    <span id="lang-text">AR</span>
-                    <i class="fas fa-globe"></i>
-                </div>
-                <div class="mobile-menu">☰</div>
                 <a href="#" class="logo">
                     SHOPPING <span>DREAM</span>
                 </a>
@@ -657,6 +651,11 @@
                         <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
                     </ul>
                 </nav>
+                <div class="lang-toggle">
+                    <span id="lang-text">AR</span>
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="mobile-menu">☰</div>
             </div>
         </div>
     </header>
@@ -682,8 +681,8 @@
                 <div class="about-text fade-in">
                     <h3 id="vision-title">رؤيتنا ورسالتنا</h3>
                     <p id="vision-desc1">نحن شركة رائدة في مجال الدفع الإلكتروني وشحن الألعاب، نقدم حلولاً متكاملة لعملائنا في جميع أنحاء العالم. تأسست شركتنا برؤية واضحة وهي تبسيط عمليات الدفع والشحن الرقمية.</p>
-                    <p id="vision-desc2">nfchr bthdyd lmzyd mn lxdmth l'aktr mn 50 dwlh 'wl l'l'm. frqna mn lmhtrfyn y'ml 'ly ttrwr wthsyn xdmthna ltlbyt htyajt 'ml'ana lkr'm.</p>
-                    <p id="vision-desc3">n'mn 'n tgrbt ldf' wlshn yjb 'n tkwn slst w'mnt, wdh lmza nf'rh l'ml'ana lkr'm.</p>
+                    <p id="vision-desc2">نفتخر بخدمة أكثر من 50 دولة حول العالم. فريقنا من المحترفين يعمل باستمرار على تطوير وتحسين خدماتنا لتلبية احتياجات عملائنا الكرام.</p>
+                    <p id="vision-desc3">نؤمن بأن تجربة الدفع والشحن يجب أن تكون سلسة وآمنة، وهذا بالضبط ما نقدمه لعملائنا الكرام.</p>
                 </div>
                 <div class="about-image fade-in">
                     <img src="https://k.top4top.io/p_3555j1qbz1.png" alt="فريق DREAM SHOPPING">
@@ -1018,8 +1017,8 @@
             "about-title": { ar: "من نحن", en: "About Us" },
             "vision-title": { ar: "رؤيتنا ورسالتنا", en: "Our Vision & Mission" },
             "vision-desc1": { ar: "نحن شركة رائدة في مجال الدفع الإلكتروني وشحن الألعاب، نقدم حلولاً متكاملة لعملائنا في جميع أنحاء العالم. تأسست شركتنا برؤية واضحة وهي تبسيط عمليات الدفع والشحن الرقمية.", en: "We are a leading company in electronic payments and game shipping, providing comprehensive solutions to our customers worldwide. Our company was founded with a clear vision to simplify digital payment and shipping processes." },
-            "vision-desc2": { ar: "nfchr bthdyd lmzyd mn lxdmth l'aktr mn 50 dwlh 'wl l'l'm. frqna mn lmhtrfyn y'ml 'ly ttrwr wthsyn xdmthna ltlbyt htyajt 'ml'ana lkr'm.", en: "We proudly serve over 50 countries worldwide. Our team of professionals constantly works to develop and improve our services to meet the needs of our valued customers." },
-            "vision-desc3": { ar: "n'mn 'n tgrbt ldf' wlshn yjb 'n tkwn slst w'mnt, wdh lmza nf'rh l'ml'ana lkr'm.", en: "We believe that the payment and shipping experience should be smooth and secure, and that is exactly what we provide to our valued customers." },
+            "vision-desc2": { ar: "نفتخر بخدمة أكثر من 50 دولة حول العالم. فريقنا من المحترفين يعمل باستمرار على تطوير وتحسين خدماتنا لتلبية احتياجات عملائنا الكرام.", en: "We proudly serve over 50 countries worldwide. Our team of professionals constantly works to develop and improve our services to meet the needs of our valued customers." },
+            "vision-desc3": { ar: "نؤمن بأن تجربة الدفع والشحن يجب أن تكون سلسة وآمنة، وهذا بالضبط ما نقدمه لعملائنا الكرام.", en: "We believe that the payment and shipping experience should be smooth and secure, and that is exactly what we provide to our valued customers." },
             "services-title": { ar: "خدماتنا", en: "Our Services" },
             "service1-title": { ar: "الدفع الإلكتروني", en: "Electronic Payment" },
             "service1-desc": { ar: "نقدم حلول دفع إلكتروني آمنة وسريعة مع تشفير متقدم لحماية بياناتك المالية.", en: "We provide secure and fast electronic payment solutions with advanced encryption to protect your financial data." },
