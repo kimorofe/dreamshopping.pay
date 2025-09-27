@@ -325,20 +325,26 @@
         }
         .close-transfer {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: -12px;
+            right: -12px;
             background: #ff4444;
             color: white;
             border: none;
-            width: 30px;
-            height: 30px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
             z-index: 1001;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .close-transfer:hover {
+            background: #cc0000;
+            transform: scale(1.05);
         }
         /* Visitor Counter */
         .visitor-counter {
@@ -845,7 +851,7 @@
                         <i class="far fa-star"></i>
                     </div>
                     <div class="testimonial-text">
-                        "الخدمة ممتازة، بس أحياناً بيكون فيه تأخير في تحويلات العملات الأجنبية. لكن بشكل عام أنا راضي جداً."
+                        "الخدمة ممتازة، بس أحيانا بيكون فيه تأخير في تحويلات العملات الأجنبية. لكن بشكل عام أنا راضي جداً."
                     </div>
                     <div class="testimonial-author">علي محمود - بورسعيد</div>
                 </div>
@@ -902,7 +908,7 @@
                     <div class="social-links">
                         <a href="https://wa.me/message/ZAMCJ2OF2SB4A1" title="واتساب"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.facebook.com/share/1CsrZtmKKK/" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://t.me/dreamshopping" title="تليجرام"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://t.me/DreamShopping_app" title="تليجرام"><i class="fab fa-telegram-plane"></i></a>
                     </div>
                 </div>
                 <div class="footer-column fade-in">
@@ -996,7 +1002,7 @@
         const transferFrame = document.getElementById('transferFrame');
         const closeTransferBtn = document.createElement('button');
         closeTransferBtn.className = 'close-transfer';
-        closeTransferBtn.innerHTML = '×';
+        closeTransferBtn.innerHTML = '<i class="fas fa-times"></i>';
         transferFrame.appendChild(closeTransferBtn);
         showTransferFrameBtn.addEventListener('click', function() {
             transferFrame.classList.add('active');
