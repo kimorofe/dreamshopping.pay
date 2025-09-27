@@ -43,6 +43,10 @@
             --light-bg: var(--dark-bg);
             --white: var(--dark-surface);
             background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+        body.dark-mode a {
+            color: var(--dark-text);
         }
         .container {
             width: 95%;
@@ -104,9 +108,6 @@
         nav ul li a:hover {
             background-color: rgba(0, 120, 183, 0.08);
             color: var(--primary-color);
-        }
-        body.dark-mode nav ul li a {
-            color: var(--dark-text);
         }
         .mobile-menu {
             display: none;
@@ -266,11 +267,8 @@
         .about-text p {
             margin-bottom: 14px;
             font-size: clamp(14px, 3.5vw, 16px);
-            color: #555;
+            color: var(--text-color);
             line-height: 1.7;
-        }
-        body.dark-mode .about-text p {
-            color: #ccc;
         }
         .about-image {
             width: 100%;
@@ -335,22 +333,16 @@
         }
         .service-card p {
             font-size: clamp(13px, 3.5vw, 15px);
-            color: #555;
+            color: var(--text-color);
             line-height: 1.6;
-        }
-        body.dark-mode .service-card p {
-            color: #ccc;
         }
         /* Payment */
         .payment-methods p {
             max-width: 90%;
             margin: 0 auto 24px;
             font-size: clamp(14px, 3.5vw, 16px);
-            color: #555;
+            color: var(--text-color);
             text-align: center;
-        }
-        body.dark-mode .payment-methods p {
-            color: #ccc;
         }
         .payment-logos {
             display: flex;
@@ -408,11 +400,8 @@
         .transfer-text p {
             margin-bottom: 14px;
             font-size: clamp(14px, 3.5vw, 16px);
-            color: #555;
+            color: var(--text-color);
             line-height: 1.7;
-        }
-        body.dark-mode .transfer-text p {
-            color: #ccc;
         }
         /* Testimonials */
         .testimonials {
@@ -450,11 +439,8 @@
             font-style: italic;
             margin-bottom: 16px;
             font-size: clamp(14px, 3.5vw, 16px);
-            color: #555;
+            color: var(--text-color);
             line-height: 1.6;
-        }
-        body.dark-mode .testimonial-text {
-            color: #ccc;
         }
         .testimonial-author {
             font-weight: 700;
@@ -494,12 +480,9 @@
         }
         .app-text p {
             margin-bottom: 16px;
-            color: #444;
+            color: var(--text-color);
             font-size: clamp(14px, 3.5vw, 16px);
             line-height: 1.7;
-        }
-        body.dark-mode .app-text p {
-            color: #ccc;
         }
         .app-text ul {
             margin: 16px 0;
@@ -512,11 +495,8 @@
             position: relative;
             padding-right: 20px;
             font-size: clamp(14px, 3.5vw, 16px);
-            color: #444;
+            color: var(--text-color);
             line-height: 1.6;
-        }
-        body.dark-mode .app-text ul li {
-            color: #ccc;
         }
         .app-text ul li::before {
             content: "✓";
@@ -531,7 +511,7 @@
         /* Footer */
         footer {
             background: linear-gradient(135deg, #1a1a1a, #222);
-            color: var(--white);
+            color: var(--dark-text);
             padding: clamp(40px, 8vh, 60px) 0 clamp(20px, 4vh, 30px);
         }
         .footer-content {
@@ -567,7 +547,12 @@
         }
         .footer-column p {
             font-size: clamp(13px, 3.5vw, 15px);
-            color: #ccc;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        .footer-column ul li {
+            font-size: clamp(13px, 3.5vw, 15px);
+            color: var(--dark-text);
             line-height: 1.6;
         }
         .social-links {
