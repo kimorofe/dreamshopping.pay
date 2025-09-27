@@ -21,28 +21,24 @@
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             --radius: 20px;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
             background-color: #fafbfd;
         }
-
         .container {
             width: 95%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 10px;
         }
-
         /* Header */
         header {
             background-color: var(--white);
@@ -53,38 +49,32 @@
             z-index: 1000;
             transition: all 0.3s ease;
         }
-
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 12px 0;
         }
-
         .logo {
             font-size: clamp(18px, 5vw, 24px);
             font-weight: 700;
-            color: #0078B7; /* لون "DREAM" برتقالي */
+            color: #0078B7;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 6px;
         }
-
         .logo span {
-            color: #FF5733; /* لون "SHOPPING" أزرق */
+            color: #FF5733;
         }
-
         nav ul {
             display: flex;
             list-style: none;
             gap: 10px;
         }
-
         nav ul li {
             margin-left: 0;
         }
-
         nav ul li a {
             display: block;
             padding: 8px 12px;
@@ -96,19 +86,16 @@
             border-radius: 6px;
             transition: var(--transition);
         }
-
         nav ul li a:hover {
             background-color: rgba(0, 120, 183, 0.08);
             color: var(--primary-color);
         }
-
         .mobile-menu {
             display: none;
             font-size: 26px;
             cursor: pointer;
             color: var(--text-color);
         }
-
         /* Hero */
         .hero {
             background: linear-gradient(135deg, rgba(0, 100, 160, 0.92), rgba(0, 80, 140, 0.95));
@@ -119,14 +106,12 @@
             display: flex;
             align-items: center;
         }
-
         .hero h1 {
             font-size: clamp(22px, 6vw, 36px);
             margin-bottom: 16px;
             line-height: 1.3;
             font-weight: 700;
         }
-
         .hero p {
             font-size: clamp(15px, 4vw, 18px);
             max-width: 90%;
@@ -134,7 +119,6 @@
             line-height: 1.7;
             opacity: 0.95;
         }
-
         .btn {
             display: inline-block;
             background-color: var(--white);
@@ -149,28 +133,23 @@
             box-shadow: var(--shadow);
             margin-top: 10px;
         }
-
         .btn:hover {
             background-color: var(--primary-color);
             color: var(--white);
             transform: translateY(-3px);
         }
-
         .btn-primary {
             background-color: var(--primary-color);
             color: var(--white);
         }
-
         /* Sections */
         section {
             padding: clamp(50px, 10vh, 80px) 0;
         }
-
         .section-title {
             text-align: center;
             margin-bottom: clamp(30px, 6vh, 50px);
         }
-
         .section-title h2 {
             font-size: clamp(22px, 5vw, 32px);
             color: var(--primary-color);
@@ -179,7 +158,6 @@
             display: inline-block;
             padding-bottom: 8px;
         }
-
         .section-title h2::after {
             content: '';
             position: absolute;
@@ -191,7 +169,6 @@
             transform: translateX(-50%);
             border-radius: 2px;
         }
-
         /* About */
         .about-content {
             display: flex;
@@ -200,21 +177,18 @@
             align-items: center;
             text-align: center;
         }
-
         .about-text h3 {
             font-size: clamp(18px, 4.5vw, 24px);
             margin-bottom: 16px;
             color: var(--primary-color);
             font-weight: 700;
         }
-
         .about-text p {
             margin-bottom: 14px;
             font-size: clamp(14px, 3.5vw, 16px);
             color: #555;
             line-height: 1.7;
         }
-
         .about-image {
             width: 100%;
             max-width: 400px;
@@ -222,24 +196,20 @@
             overflow: hidden;
             box-shadow: var(--shadow);
         }
-
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
         }
-
         /* Services */
         .services {
             background-color: var(--light-bg);
         }
-
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: clamp(16px, 4vw, 24px);
         }
-
         .service-card {
             background: var(--white);
             padding: clamp(20px, 5vw, 28px);
@@ -248,12 +218,10 @@
             transition: var(--transition);
             box-shadow: var(--shadow);
         }
-
         .service-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-hover);
         }
-
         .service-icon {
             width: clamp(50px, 10vw, 60px);
             height: clamp(50px, 10vw, 60px);
@@ -266,25 +234,21 @@
             color: var(--primary-color);
             transition: var(--transition);
         }
-
         .service-card:hover .service-icon {
             background: rgba(0, 120, 183, 0.15);
             transform: scale(1.1);
         }
-
         .service-card h3 {
             margin-bottom: 12px;
             color: var(--primary-color);
             font-size: clamp(16px, 4vw, 18px);
             font-weight: 700;
         }
-
         .service-card p {
             font-size: clamp(13px, 3.5vw, 15px);
             color: #555;
             line-height: 1.6;
         }
-
         /* Payment */
         .payment-methods p {
             max-width: 90%;
@@ -293,7 +257,6 @@
             color: #555;
             text-align: center;
         }
-
         .payment-logos {
             display: flex;
             justify-content: center;
@@ -301,7 +264,6 @@
             gap: clamp(12px, 3vw, 20px);
             margin-top: 20px;
         }
-
         .payment-logo {
             background: var(--white);
             padding: clamp(12px, 3vw, 16px) 8px;
@@ -316,17 +278,37 @@
             font-weight: 600;
             font-size: clamp(12px, 3vw, 14px);
         }
-
         .payment-logo:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
         }
-
+        /* Transfer Section */
+        .transfer-section {
+            background-color: var(--light-bg);
+        }
+        .transfer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(20px, 5vw, 30px);
+            text-align: center;
+        }
+        .transfer-text h3 {
+            font-size: clamp(18px, 4.5vw, 24px);
+            margin-bottom: 16px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        .transfer-text p {
+            margin-bottom: 14px;
+            font-size: clamp(14px, 3.5vw, 16px);
+            color: #555;
+            line-height: 1.7;
+        }
         /* App Section */
         .app-section {
             background: linear-gradient(135deg, #f0f7ff, #e6f2ff);
         }
-
         .app-content {
             display: flex;
             flex-direction: column;
@@ -334,12 +316,10 @@
             gap: clamp(24px, 6vw, 36px);
             text-align: center;
         }
-
         .app-image {
             width: 100%;
             max-width: 300px;
         }
-
         .app-image img {
             width: 100%;
             height: auto;
@@ -347,28 +327,24 @@
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
             border: 6px solid white;
         }
-
         .app-text h3 {
             font-size: clamp(18px, 4.5vw, 24px);
             margin-bottom: 16px;
             color: var(--primary-color);
             font-weight: 700;
         }
-
         .app-text p {
             margin-bottom: 16px;
             color: #444;
             font-size: clamp(14px, 3.5vw, 16px);
             line-height: 1.7;
         }
-
         .app-text ul {
             margin: 16px 0;
             padding: 0;
             text-align: right;
             max-width: 100%;
         }
-
         .app-text ul li {
             margin-bottom: 10px;
             position: relative;
@@ -377,7 +353,6 @@
             color: #444;
             line-height: 1.6;
         }
-
         .app-text ul li::before {
             content: "✓";
             position: absolute;
@@ -385,41 +360,34 @@
             color: var(--primary-color);
             font-weight: bold;
         }
-
         .app-download {
             margin-top: 20px;
         }
-
         /* Footer */
         footer {
             background: linear-gradient(135deg, #1a1a1a, #222);
             color: var(--white);
             padding: clamp(40px, 8vh, 60px) 0 clamp(20px, 4vh, 30px);
         }
-
         .footer-content {
             display: grid;
             grid-template-columns: 1fr;
             gap: clamp(24px, 5vw, 32px);
             margin-bottom: clamp(20px, 4vh, 30px);
         }
-
         .footer-column h3 {
             color: var(--primary-light);
             margin-bottom: 16px;
             font-size: clamp(16px, 4vw, 18px);
             font-weight: 700;
         }
-
         .footer-column ul {
             list-style: none;
             padding: 0;
         }
-
         .footer-column ul li {
             margin-bottom: 10px;
         }
-
         .footer-column ul li a {
             color: #ccc;
             text-decoration: none;
@@ -428,25 +396,21 @@
             display: block;
             padding: 4px 0;
         }
-
         .footer-column ul li a:hover {
             color: var(--white);
             padding-right: 8px;
         }
-
         .footer-column p {
             font-size: clamp(13px, 3.5vw, 15px);
             color: #ccc;
             line-height: 1.6;
         }
-
         .social-links {
             display: flex;
             justify-content: center;
             gap: 12px;
             margin-top: 16px;
         }
-
         .social-links a {
             display: flex;
             align-items: center;
@@ -459,16 +423,13 @@
             transition: var(--transition);
             text-decoration: none;
         }
-
         .social-links a:hover {
             background-color: var(--primary-color);
             transform: translateY(-2px);
         }
-
         .social-links a i {
             font-size: clamp(16px, 4vw, 20px);
         }
-
         .copyright {
             text-align: center;
             padding-top: 20px;
@@ -476,7 +437,6 @@
             font-size: clamp(12px, 3vw, 14px);
             color: #aaa;
         }
-
         /* WhatsApp Floating Button */
         .whatsapp-float {
             position: fixed;
@@ -496,12 +456,10 @@
             font-size: clamp(20px, 5vw, 26px);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
         .whatsapp-float:hover {
             transform: scale(1.08);
             box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
         }
-
         .whatsapp-tooltip {
             position: absolute;
             bottom: clamp(60px, 10vh, 74px);
@@ -518,19 +476,16 @@
             transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
-
         .whatsapp-tooltip.show {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-
         /* Mobile Menu */
         @media (max-width: 768px) {
             .mobile-menu {
                 display: block;
             }
-
             nav {
                 position: fixed;
                 top: 60px;
@@ -544,28 +499,22 @@
                 padding: 20px 15px;
                 z-index: 999;
             }
-
             nav.active {
                 right: 0;
             }
-
             nav ul {
                 flex-direction: column;
             }
-
             nav ul li {
                 margin: 8px 0;
             }
-
             .hero h1 {
                 font-size: clamp(20px, 7vw, 30px);
             }
-
             .footer-content {
                 grid-template-columns: 1fr;
             }
         }
-
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -577,12 +526,10 @@
                 transform: translateY(0);
             }
         }
-
         .fade-in {
             opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
         }
-
         .fade-in:nth-child(1) { animation-delay: 0.1s; }
         .fade-in:nth-child(2) { animation-delay: 0.2s; }
         .fade-in:nth-child(3) { animation-delay: 0.3s; }
@@ -605,6 +552,7 @@
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#about">من نحن</a></li>
                         <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#transfer">تحويل الأموال</a></li>
                         <li><a href="#payment">طرق الدفع</a></li>
                         <li><a href="#app">التطبيق</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
@@ -613,7 +561,6 @@
             </div>
         </div>
     </header>
-
     <!-- Hero -->
     <section class="hero fade-in" id="home">
         <div class="container">
@@ -622,7 +569,6 @@
             <a href="#services" class="btn btn-primary">اكتشف خدماتنا</a>
         </div>
     </section>
-
     <!-- About -->
     <section id="about">
         <div class="container">
@@ -642,7 +588,6 @@
             </div>
         </div>
     </section>
-
     <!-- Services -->
     <section class="services" id="services">
         <div class="container">
@@ -695,7 +640,21 @@
             </div>
         </div>
     </section>
-
+    <!-- Transfer Section -->
+    <section class="transfer-section" id="transfer">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>تحويل الأموال</h2>
+            </div>
+            <div class="transfer-content">
+                <div class="transfer-text fade-in">
+                    <h3>تحويل الأموال بسهولة وأمان</h3>
+                    <p>نقدم خدمة تحويل الأموال المحلية والعالمية بسرعة وأمان تام. استمتع بتحويل الأموال إلى أي مكان في العالم بكل سهولة.</p>
+                    <a href="https://kimorofe.github.io/dreamshopping.pay/" class="btn btn-primary" target="_blank">انتقل إلى صفحة التحويل</a>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Payment -->
     <section id="payment">
         <div class="container">
@@ -714,7 +673,6 @@
             </div>
         </div>
     </section>
-
     <!-- App Section -->
     <section class="app-section" id="app">
         <div class="container">
@@ -742,7 +700,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -761,6 +718,7 @@
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#about">من نحن</a></li>
                         <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#transfer">تحويل الأموال</a></li>
                         <li><a href="#payment">طرق الدفع</a></li>
                         <li><a href="#app">التطبيق</a></li>
                     </ul>
@@ -789,13 +747,11 @@
             </div>
         </div>
     </footer>
-
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/message/ZAMCJ2OF2SB4A1" class="whatsapp-float" target="_blank" aria-label="واتساب">
         <i class="fab fa-whatsapp"></i>
         <div class="whatsapp-tooltip">تواصل معنا الآن</div>
     </a>
-
     <script>
         // Mobile Menu Toggle
         document.querySelector('.mobile-menu').addEventListener('click', function() {
@@ -803,7 +759,6 @@
             nav.classList.toggle('active');
             this.textContent = nav.classList.contains('active') ? '✕' : '☰';
         });
-
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             const nav = document.querySelector('nav');
@@ -813,7 +768,6 @@
                 menuBtn.textContent = '☰';
             }
         });
-
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -833,7 +787,6 @@
                 }
             });
         });
-
         // Show WhatsApp tooltip
         document.addEventListener('DOMContentLoaded', function () {
             const tooltip = document.querySelector('.whatsapp-tooltip');
@@ -847,5 +800,3 @@
     </script>
 </body>
 </html>
-
-
