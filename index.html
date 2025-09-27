@@ -318,9 +318,47 @@
             background: var(--white);
             margin: 20px auto;
             display: none;
+            position: relative;
         }
         .transfer-frame.active {
             display: block;
+        }
+        .close-transfer {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff4444;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Visitor Counter */
+        .visitor-counter {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            margin: 20px auto;
+            max-width: 300px;
+        }
+        .counter-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+        .counter-text {
+            font-size: 16px;
+            color: #555;
         }
         /* Testimonials */
         .testimonials {
@@ -696,6 +734,15 @@
             </div>
         </div>
     </section>
+    <!-- Visitor Counter -->
+    <section class="visitor-counter-section">
+        <div class="container">
+            <div class="visitor-counter fade-in">
+                <div class="counter-text">عدد زوار الموقع</div>
+                <div class="counter-number" id="visitorCounter">1,234,567</div>
+            </div>
+        </div>
+    </section>
     <!-- Transfer Section -->
     <section class="transfer-section" id="transfer">
         <div class="container">
@@ -855,6 +902,7 @@
                     <div class="social-links">
                         <a href="https://wa.me/message/ZAMCJ2OF2SB4A1" title="واتساب"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.facebook.com/share/1CsrZtmKKK/" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://t.me/dreamshopping" title="تليجرام"><i class="fab fa-telegram-plane"></i></a>
                     </div>
                 </div>
                 <div class="footer-column fade-in">
@@ -946,12 +994,35 @@
         // Transfer Frame Toggle
         const showTransferFrameBtn = document.getElementById('showTransferFrame');
         const transferFrame = document.getElementById('transferFrame');
-
+        const closeTransferBtn = document.createElement('button');
+        closeTransferBtn.className = 'close-transfer';
+        closeTransferBtn.innerHTML = '×';
+        transferFrame.appendChild(closeTransferBtn);
         showTransferFrameBtn.addEventListener('click', function() {
             transferFrame.classList.add('active');
             showTransferFrameBtn.style.display = 'none';
         });
+        closeTransferBtn.addEventListener('click', function() {
+            transferFrame.classList.remove('active');
+            showTransferFrameBtn.style.display = 'block';
+        });
+        // Visitor Counter Animation
+        function animateCounter() {
+            const counter = document.getElementById('visitorCounter');
+            let count = 0;
+            const target = 1234567;
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    count = target;
+                    clearInterval(timer);
+                }
+                counter.textContent = Math.floor(count).toLocaleString();
+            }, 16);
+        }
+        animateCounter();
     </script>
 </body>
 </html>
-
