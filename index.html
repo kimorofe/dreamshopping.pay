@@ -137,19 +137,18 @@
         .dark-mode-toggle {
             display: flex;
             align-items: center;
-            gap: 4px;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
             cursor: pointer;
-            padding: 6px 10px;
-            border-radius: 6px;
+            border-radius: 50%;
             transition: var(--transition);
             margin-left: 10px;
-        }
-        .dark-mode-toggle:hover {
+            color: var(--text-color);
             background-color: rgba(0, 120, 183, 0.08);
         }
-        .dark-mode-toggle span {
-            font-weight: 600;
-            font-size: clamp(13px, 3.5vw, 15px);
+        .dark-mode-toggle:hover {
+            background-color: rgba(0, 120, 183, 0.15);
         }
         /* Hero */
         .hero {
@@ -362,7 +361,7 @@
         }
         .payment-logo {
             background: var(--white);
-            padding: clamp(12px, 3vw, 16px) 8px;
+            padding: 8px;
             border-radius: 12px;
             box-shadow: var(--shadow);
             min-width: clamp(100px, 22vw, 120px);
@@ -380,6 +379,11 @@
         .payment-logo:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
+        }
+        .payment-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
         /* Transfer Section */
         .transfer-section {
@@ -849,11 +853,24 @@
             <div class="payment-methods fade-in">
                 <p id="payment-desc">ندعم جميع طرق الدفع المحلية والعالمية الشهيرة لتوفير أقصى درجات الراحة لأعضائنا</p>
                 <div class="payment-logos">
-                    <div class="payment-logo"><span style="color: #e60023;">Vodafone Cash</span></div>
-                    <div class="payment-logo"><span style="color: #0052FF;">InstaPay</span></div>
-                    <div class="payment-logo"><span style="color: #003087;">PayPal</span></div>
-                    <div class="payment-logo"><span style="color: #bb3385;">Skrill</span></div>
-                    <div class="payment-logo"><span style="color: #F0B90B;">Binance</span></div>
+                    <div class="payment-logo">
+                        <img src="https://f.top4top.io/p_35575e1v62.png" alt="Vodafone Cash">
+                    </div>
+                    <div class="payment-logo">
+                        <img src="https://e.top4top.io/p_3557108s31.png" alt="InstaPay">
+                    </div>
+                    <div class="payment-logo">
+                        <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal">
+                    </div>
+                    <div class="payment-logo">
+                        <img src="https://k.top4top.io/p_3557wal7p2.png" alt="Skrill">
+                    </div>
+                    <div class="payment-logo">
+                        <img src="https://l.top4top.io/p_35574t0up3.png" alt="Binance">
+                    </div>
+                    <div class="payment-logo">
+                        <img src="https://j.top4top.io/p_3557wq9wk1.png" alt="Payeer">
+                    </div>
                 </div>
             </div>
         </div>
@@ -1162,8 +1179,7 @@
             "footer-contact2": { ar: "الهاتف: +01090470326", en: "Phone: +01090470326" },
             "footer-contact3": { ar: "العنوان: القاهرة، مصر", en: "Address: Cairo, Egypt" },
             "copyright-text": { ar: "جميع الحقوق محفوظة  2018-2025 DREAM SHOPPING", en: "All rights reserved &copy; 2018-2025 DREAM SHOPPING" },
-            "visitor-text": { ar: "عدد زوار الموقع", en: "Website Visitors" },
-            "dark-mode-text": { ar: "الوضع المظلم", en: "Dark Mode" }
+            "visitor-text": { ar: "عدد زوار الموقع", en: "Website Visitors" }
         };
         langToggle.addEventListener('click', function() {
             isEnglish = !isEnglish;
@@ -1179,12 +1195,10 @@
         });
         // Dark Mode Toggle
         const darkModeToggle = document.querySelector('.dark-mode-toggle');
-        const darkModeText = document.getElementById('dark-mode-text');
         let isDarkMode = false;
         darkModeToggle.addEventListener('click', function() {
             isDarkMode = !isDarkMode;
             document.body.classList.toggle('dark-mode', isDarkMode);
-            darkModeText.textContent = isDarkMode ? (isEnglish ? 'Light Mode' : 'الوضع المضيء') : (isEnglish ? 'Dark Mode' : 'الوضع المظلم');
             const icon = this.querySelector('i');
             icon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
         });
