@@ -349,49 +349,6 @@
             color: #555;
             line-height: 1.7;
         }
-        /* Transfer Frame */
-        .transfer-frame {
-            width: 100%;
-            max-width: 800px;
-            height: 600px;
-            border: none;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            background: var(--white);
-            margin: 20px auto;
-            display: none;
-            position: relative;
-        }
-        .transfer-frame.active {
-            display: block;
-        }
-        .close-transfer {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: #ff4444;
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-            display: none;
-        }
-        .close-transfer.active {
-            display: flex;
-        }
-        .close-transfer:hover {
-            background: #cc0000;
-            transform: scale(1.05);
-        }
         /* Testimonials */
         .testimonials {
             background-color: var(--light-bg);
@@ -608,8 +565,20 @@
         }
         /* Mobile Menu */
         @media (max-width: 768px) {
+            .header-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .header-content {
+                flex-direction: row-reverse;
+            }
             .mobile-menu {
                 display: block;
+                margin-right: 10px;
+            }
+            .lang-toggle {
+                margin-right: 10px;
             }
             nav {
                 position: fixed;
@@ -668,10 +637,14 @@
     <header>
         <div class="container">
             <div class="header-content">
+                <div class="lang-toggle">
+                    <span id="lang-text">AR</span>
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="mobile-menu">☰</div>
                 <a href="#" class="logo">
                     SHOPPING <span>DREAM</span>
                 </a>
-                <div class="mobile-menu">☰</div>
                 <nav>
                     <ul>
                         <li><a href="#home" class="nav-link">الرئيسية</a></li>
@@ -684,10 +657,6 @@
                         <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
                     </ul>
                 </nav>
-                <div class="lang-toggle">
-                    <span id="lang-text">AR</span>
-                    <i class="fas fa-globe"></i>
-                </div>
             </div>
         </div>
     </header>
@@ -784,10 +753,8 @@
                 <div class="transfer-text fade-in">
                     <h3 id="transfer-subtitle">تحويل الأموال بسهولة وأمان</h3>
                     <p id="transfer-desc">نقدم خدمة تحويل الأموال المحلية والعالمية بسرعة وأمان تام. استمتع بتحويل الأموال إلى أي مكان في العالم بكل سهولة.</p>
-                    <button id="showTransferFrame" class="btn btn-primary" style="display: block;">ابدأ تحويل الأموال</button>
+                    <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="btn btn-primary">ابدأ تحويل الأموال</a>
                 </div>
-                <iframe class="transfer-frame" id="transferFrame" src="https://kimorofe.github.io/Dream-Shopping.Pay/"></iframe>
-                <button class="close-transfer" id="closeTransferFrame"><i class="fas fa-times"></i></button>
             </div>
         </div>
     </section>
@@ -1023,23 +990,6 @@
                 }, 3000);
             }
         });
-        // Transfer Frame Toggle
-        const showTransferFrameBtn = document.getElementById('showTransferFrame');
-        const transferFrame = document.getElementById('transferFrame');
-        const closeTransferBtn = document.getElementById('closeTransferFrame');
-
-        showTransferFrameBtn.addEventListener('click', function() {
-            transferFrame.classList.add('active');
-            showTransferFrameBtn.style.display = 'none';
-            closeTransferBtn.classList.add('active');
-        });
-
-        closeTransferBtn.addEventListener('click', function() {
-            transferFrame.classList.remove('active');
-            showTransferFrameBtn.style.display = 'block';
-            closeTransferBtn.classList.remove('active');
-        });
-
         // Visitor Counter Animation
         function animateCounter() {
             const counter = document.getElementById('visitorCounter');
@@ -1057,12 +1007,10 @@
             }, 16);
         }
         animateCounter();
-
         // Language Toggle
         const langToggle = document.querySelector('.lang-toggle');
         const langText = document.getElementById('lang-text');
         let isEnglish = false;
-
         const translations = {
             "hero-title": { ar: "بوابة الدفع الإلكتروني والشحن العالمية", en: "Global Electronic Payment & Shipping Gateway" },
             "hero-desc": { ar: "نقدم حلول دفع إلكتروني آمنة وسريعة مع خدمة شحن الألعاب لجميع دول العالم. استمتع بتجربة تسوق رقمية متكاملة مع دعم جميع طرق الدفع المحلية والعالمية.", en: "We provide secure and fast electronic payment solutions with game shipping services worldwide. Enjoy a seamless digital shopping experience with support for all local and global payment methods." },
@@ -1088,7 +1036,6 @@
             "transfer-title": { ar: "تحويل الأموال", en: "Money Transfer" },
             "transfer-subtitle": { ar: "تحويل الأموال بسهولة وأمان", en: "Transfer Money Easily and Securely" },
             "transfer-desc": { ar: "نقدم خدمة تحويل الأموال المحلية والعالمية بسرعة وأمان تام. استمتع بتحويل الأموال إلى أي مكان في العالم بكل سهولة.", en: "We provide local and international money transfer services with speed and complete security. Enjoy transferring money anywhere in the world with ease." },
-            "showTransferFrame": { ar: "ابدأ تحويل الأموال", en: "Start Money Transfer" },
             "payment-title": { ar: "طرق الدفع المدعومة", en: "Supported Payment Methods" },
             "payment-desc": { ar: "ندعم جميع طرق الدفع المحلية والعالمية الشهيرة لتوفير أقصى درجات الراحة لأعضائنا", en: "We support all popular local and global payment methods to provide the utmost convenience for our members" },
             "reviews-title": { ar: "تقييمات عملائنا", en: "Customer Reviews" },
@@ -1135,13 +1082,11 @@
             "copyright-text": { ar: "جميع الحقوق محفوظة &copy; 2018-2025 DREAM SHOPPING", en: "All rights reserved &copy; 2018-2025 DREAM SHOPPING" },
             "visitor-text": { ar: "عدد زوار الموقع", en: "Website Visitors" }
         };
-
         langToggle.addEventListener('click', function() {
             isEnglish = !isEnglish;
             langText.textContent = isEnglish ? 'EN' : 'AR';
             document.documentElement.setAttribute('lang', isEnglish ? 'en' : 'ar');
             document.documentElement.setAttribute('dir', isEnglish ? 'ltr' : 'rtl');
-
             for (const [id, translation] of Object.entries(translations)) {
                 const element = document.getElementById(id);
                 if (element) {
