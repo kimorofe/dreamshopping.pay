@@ -20,6 +20,7 @@
             --shadow-hover: 0 12px 30px rgba(0, 120, 183, 0.3);
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             --radius: 20px;
+            --gold: #FFD700;
         }
         * {
             margin: 0;
@@ -306,51 +307,58 @@
             color: #555;
             line-height: 1.7;
         }
-        /* Transfer Form */
-        .transfer-form {
-            background: var(--white);
-            padding: clamp(20px, 5vw, 30px);
+        /* Transfer Frame */
+        .transfer-frame {
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            border: none;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
+            background: var(--white);
+            margin: 20px auto;
             display: none;
         }
-        .transfer-form.active {
+        .transfer-frame.active {
             display: block;
-            animation: fadeInUp 0.6s ease;
         }
-        .form-group {
-            margin-bottom: 16px;
-            text-align: right;
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--light-bg);
         }
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: var(--primary-color);
-            font-size: clamp(14px, 3.5vw, 16px);
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(16px, 4vw, 24px);
         }
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: clamp(14px, 3.5vw, 16px);
+        .testimonial-card {
+            background: var(--white);
+            padding: clamp(20px, 5vw, 28px);
+            border-radius: var(--radius);
+            text-align: center;
             transition: var(--transition);
+            box-shadow: var(--shadow);
         }
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: var(--primary-color);
-            outline: none;
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
-        .transfer-actions {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: clamp(16px, 4vw, 20px);
+            margin: 12px 0;
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 16px;
+            font-size: clamp(14px, 3.5vw, 16px);
+            color: #555;
+            line-height: 1.6;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: clamp(15px, 3.8vw, 17px);
         }
         /* App Section */
         .app-section {
@@ -601,6 +609,7 @@
                         <li><a href="#services">خدماتنا</a></li>
                         <li><a href="#transfer">تحويل الأموال</a></li>
                         <li><a href="#payment">طرق الدفع</a></li>
+                        <li><a href="#reviews">تقييمات العملاء</a></li>
                         <li><a href="#app">التطبيق</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
@@ -626,7 +635,7 @@
                 <div class="about-text fade-in">
                     <h3>رؤيتنا ورسالتنا</h3>
                     <p>نحن شركة رائدة في مجال الدفع الإلكتروني وشحن الألعاب، نقدم حلولاً متكاملة لعملائنا في جميع أنحاء العالم. تأسست شركتنا برؤية واضحة وهي تبسيط عمليات الدفع والشحن الرقمية.</p>
-                    <p>nfخر بتقديم خدماتنا لأكثر من 50 دولة حول العالم، مع دعم جميع طرق الدفع المحلية والعالمية الشهيرة. فريقنا من المحترفين يعمل باستمرار على تطوير وتحسين خدماتنا لتلبية احتياجات عملائنا.</p>
+                    <p>نفخر بتقديم خدماتنا لأكثر من 50 دولة حول العالم، مع دعم جميع طرق الدفع المحلية والعالمية الشهيرة. فريقنا من المحترفين يعمل باستمرار على تطوير وتحسين خدماتنا لتلبية احتياجات عملائنا.</p>
                     <p>نؤمن بأن تجربة الدفع والشحن يجب أن تكون سلسة وآمنة، وهذا بالضبط ما نوفره لعملائنا الكرام.</p>
                 </div>
                 <div class="about-image fade-in">
@@ -697,42 +706,9 @@
                 <div class="transfer-text fade-in">
                     <h3>تحويل الأموال بسهولة وأمان</h3>
                     <p>نقدم خدمة تحويل الأموال المحلية والعالمية بسرعة وأمان تام. استمتع بتحويل الأموال إلى أي مكان في العالم بكل سهولة.</p>
-                    <button id="showTransferForm" class="btn btn-primary">ابدأ تحويل الأموال</button>
+                    <button id="showTransferFrame" class="btn btn-primary">ابدأ تحويل الأموال</button>
                 </div>
-                <div class="transfer-form" id="transferForm">
-                    <h3>نموذج تحويل الأموال</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="fromAccount">من حساب:</label>
-                            <input type="text" id="fromAccount" placeholder="أدخل رقم حسابك" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="toAccount">إلى حساب:</label>
-                            <input type="text" id="toAccount" placeholder="أدخل رقم حساب المستلم" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="amount">المبلغ:</label>
-                            <input type="number" id="amount" placeholder="أدخل المبلغ" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="currency">العملة:</label>
-                            <select id="currency" required>
-                                <option value="EGP">جنيه مصري</option>
-                                <option value="USD">دولار أمريكي</option>
-                                <option value="EUR">يورو</option>
-                                <option value="GBP">جنيه إسترليني</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="notes">ملاحظات:</label>
-                            <input type="text" id="notes" placeholder="أدخل ملاحظات (اختياري)">
-                        </div>
-                        <div class="transfer-actions">
-                            <button type="button" id="cancelTransfer" class="btn">إلغاء</button>
-                            <button type="submit" class="btn btn-primary">تأكيد التحويل</button>
-                        </div>
-                    </form>
-                </div>
+                <iframe class="transfer-frame" id="transferFrame" src="https://kimorofe.github.io/dreamshopping.pay/"></iframe>
             </div>
         </div>
     </section>
@@ -750,6 +726,94 @@
                     <div class="payment-logo"><span style="color: #003087;">PayPal</span></div>
                     <div class="payment-logo"><span style="color: #bb3385;">Skrill</span></div>
                     <div class="payment-logo"><span style="color: #F0B90B;">Binance</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials -->
+    <section class="testimonials" id="reviews">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>تقييمات عملائنا</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        "خدمتهم ممتازة جداً، تحويلات سريعة وآمنة، والدعم الفني متابع كل دقيقة. شكراً DREAM SHOPPING!"
+                    </div>
+                    <div class="testimonial-author">أحمد محمود - القاهرة</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        "من أفضل الشركات اللي تعاملت معها في شحن الألعاب، الأسعار مناسبة والسرعة فائقة. أنصح الجميع بالتعامل معهم."
+                    </div>
+                    <div class="testimonial-author">منى علي - الإسكندرية</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        "الدفع الإلكتروني عندهم سهل جداً، وبتقبل كل طرق الدفع المحلية. أنا شخصياً بستخدم فودافون كاش وبتتم المعاملة في ثواني!"
+                    </div>
+                    <div class="testimonial-author">محمود حسن - الجيزة</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        "التطبيق سهل جداً، وبتستطيع متابعة كل عملياتك من خلاله. الدعم الفني رد علي في أقل من 5 دقائق!"
+                    </div>
+                    <div class="testimonial-author">نورهان محمد - المنصورة</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        "الخدمة ممتازة، بس أحياناً بيكون فيه تأخير في تحويلات العملات الأجنبية. لكن بشكل عام أنا راضي جداً."
+                    </div>
+                    <div class="testimonial-author">علي محمود - بورسعيد</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        "أفضل شركة شحن ألعاب في مصر! الأسعار مناسبة جداً، والسرعة فائقة. شكراً على الجودة!"
+                    </div>
+                    <div class="testimonial-author">ياسمين أحمد - الإسماعيلية</div>
                 </div>
             </div>
         </div>
@@ -801,6 +865,7 @@
                         <li><a href="#services">خدماتنا</a></li>
                         <li><a href="#transfer">تحويل الأموال</a></li>
                         <li><a href="#payment">طرق الدفع</a></li>
+                        <li><a href="#reviews">تقييمات العملاء</a></li>
                         <li><a href="#app">التطبيق</a></li>
                     </ul>
                 </div>
@@ -878,27 +943,13 @@
                 }, 3000);
             }
         });
-        // Transfer Form Toggle
-        const showTransferFormBtn = document.getElementById('showTransferForm');
-        const transferForm = document.getElementById('transferForm');
-        const cancelTransferBtn = document.getElementById('cancelTransfer');
+        // Transfer Frame Toggle
+        const showTransferFrameBtn = document.getElementById('showTransferFrame');
+        const transferFrame = document.getElementById('transferFrame');
 
-        showTransferFormBtn.addEventListener('click', function() {
-            transferForm.classList.add('active');
-            showTransferFormBtn.style.display = 'none';
-        });
-
-        cancelTransferBtn.addEventListener('click', function() {
-            transferForm.classList.remove('active');
-            showTransferFormBtn.style.display = 'block';
-        });
-
-        // Handle form submission
-        document.querySelector('.transfer-form form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('تم إرسال طلب التحويل بنجاح! سيتم التواصل معك قريباً.');
-            transferForm.classList.remove('active');
-            showTransferFormBtn.style.display = 'block';
+        showTransferFrameBtn.addEventListener('click', function() {
+            transferFrame.classList.add('active');
+            showTransferFrameBtn.style.display = 'none';
         });
     </script>
 </body>
