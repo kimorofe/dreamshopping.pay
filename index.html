@@ -132,6 +132,7 @@
             font-size: clamp(14px, 3.5vw, 16px);
             box-shadow: var(--shadow);
             margin-top: 10px;
+            cursor: pointer;
         }
         .btn:hover {
             background-color: var(--primary-color);
@@ -304,6 +305,52 @@
             font-size: clamp(14px, 3.5vw, 16px);
             color: #555;
             line-height: 1.7;
+        }
+        /* Transfer Form */
+        .transfer-form {
+            background: var(--white);
+            padding: clamp(20px, 5vw, 30px);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            display: none;
+        }
+        .transfer-form.active {
+            display: block;
+            animation: fadeInUp 0.6s ease;
+        }
+        .form-group {
+            margin-bottom: 16px;
+            text-align: right;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: clamp(14px, 3.5vw, 16px);
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: clamp(14px, 3.5vw, 16px);
+            transition: var(--transition);
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        .transfer-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
         }
         /* App Section */
         .app-section {
@@ -579,7 +626,7 @@
                 <div class="about-text fade-in">
                     <h3>رؤيتنا ورسالتنا</h3>
                     <p>نحن شركة رائدة في مجال الدفع الإلكتروني وشحن الألعاب، نقدم حلولاً متكاملة لعملائنا في جميع أنحاء العالم. تأسست شركتنا برؤية واضحة وهي تبسيط عمليات الدفع والشحن الرقمية.</p>
-                    <p>نفخر بتقديم خدماتنا لأكثر من 50 دولة حول العالم، مع دعم جميع طرق الدفع المحلية والعالمية الشهيرة. فريقنا من المحترفين يعمل باستمرار على تطوير وتحسين خدماتنا لتلبية احتياجات عملائنا.</p>
+                    <p>nfخر بتقديم خدماتنا لأكثر من 50 دولة حول العالم، مع دعم جميع طرق الدفع المحلية والعالمية الشهيرة. فريقنا من المحترفين يعمل باستمرار على تطوير وتحسين خدماتنا لتلبية احتياجات عملائنا.</p>
                     <p>نؤمن بأن تجربة الدفع والشحن يجب أن تكون سلسة وآمنة، وهذا بالضبط ما نوفره لعملائنا الكرام.</p>
                 </div>
                 <div class="about-image fade-in">
@@ -650,7 +697,41 @@
                 <div class="transfer-text fade-in">
                     <h3>تحويل الأموال بسهولة وأمان</h3>
                     <p>نقدم خدمة تحويل الأموال المحلية والعالمية بسرعة وأمان تام. استمتع بتحويل الأموال إلى أي مكان في العالم بكل سهولة.</p>
-                    <a href="https://kimorofe.github.io/dreamshopping.pay/" class="btn btn-primary" target="_blank">انتقل إلى صفحة التحويل</a>
+                    <button id="showTransferForm" class="btn btn-primary">ابدأ تحويل الأموال</button>
+                </div>
+                <div class="transfer-form" id="transferForm">
+                    <h3>نموذج تحويل الأموال</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="fromAccount">من حساب:</label>
+                            <input type="text" id="fromAccount" placeholder="أدخل رقم حسابك" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="toAccount">إلى حساب:</label>
+                            <input type="text" id="toAccount" placeholder="أدخل رقم حساب المستلم" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">المبلغ:</label>
+                            <input type="number" id="amount" placeholder="أدخل المبلغ" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="currency">العملة:</label>
+                            <select id="currency" required>
+                                <option value="EGP">جنيه مصري</option>
+                                <option value="USD">دولار أمريكي</option>
+                                <option value="EUR">يورو</option>
+                                <option value="GBP">جنيه إسترليني</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">ملاحظات:</label>
+                            <input type="text" id="notes" placeholder="أدخل ملاحظات (اختياري)">
+                        </div>
+                        <div class="transfer-actions">
+                            <button type="button" id="cancelTransfer" class="btn">إلغاء</button>
+                            <button type="submit" class="btn btn-primary">تأكيد التحويل</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -796,6 +877,28 @@
                     tooltip.classList.remove('show');
                 }, 3000);
             }
+        });
+        // Transfer Form Toggle
+        const showTransferFormBtn = document.getElementById('showTransferForm');
+        const transferForm = document.getElementById('transferForm');
+        const cancelTransferBtn = document.getElementById('cancelTransfer');
+
+        showTransferFormBtn.addEventListener('click', function() {
+            transferForm.classList.add('active');
+            showTransferFormBtn.style.display = 'none';
+        });
+
+        cancelTransferBtn.addEventListener('click', function() {
+            transferForm.classList.remove('active');
+            showTransferFormBtn.style.display = 'block';
+        });
+
+        // Handle form submission
+        document.querySelector('.transfer-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('تم إرسال طلب التحويل بنجاح! سيتم التواصل معك قريباً.');
+            transferForm.classList.remove('active');
+            showTransferFormBtn.style.display = 'block';
         });
     </script>
 </body>
