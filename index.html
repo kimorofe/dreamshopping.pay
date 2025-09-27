@@ -97,6 +97,23 @@
             cursor: pointer;
             color: var(--text-color);
         }
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+        .lang-toggle:hover {
+            background-color: rgba(0, 120, 183, 0.08);
+        }
+        .lang-toggle span {
+            font-weight: 600;
+            font-size: clamp(13px, 3.5vw, 15px);
+        }
         /* Hero */
         .hero {
             background: linear-gradient(135deg, rgba(0, 100, 160, 0.92), rgba(0, 80, 140, 0.95));
@@ -143,6 +160,31 @@
         .btn-primary {
             background-color: var(--primary-color);
             color: var(--white);
+        }
+        /* Visitor Counter */
+        .visitor-counter {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin: 20px auto;
+            max-width: 300px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .counter-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--white);
+            margin: 10px 0;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .counter-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
         }
         /* Sections */
         section {
@@ -324,47 +366,31 @@
             display: block;
         }
         .close-transfer {
-            position: absolute;
-            top: -12px;
-            right: -12px;
+            position: fixed;
+            top: 10px;
+            right: 10px;
             background: #ff4444;
             color: white;
             border: none;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 18px;
-            z-index: 1001;
+            font-size: 20px;
+            z-index: 2000;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
             transition: all 0.3s;
+            display: none;
+        }
+        .close-transfer.active {
+            display: flex;
         }
         .close-transfer:hover {
             background: #cc0000;
             transform: scale(1.05);
-        }
-        /* Visitor Counter */
-        .visitor-counter {
-            background: var(--white);
-            padding: 20px;
-            border-radius: var(--radius);
-            text-align: center;
-            box-shadow: var(--shadow);
-            margin: 20px auto;
-            max-width: 300px;
-        }
-        .counter-number {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin: 10px 0;
-        }
-        .counter-text {
-            font-size: 16px;
-            color: #555;
         }
         /* Testimonials */
         .testimonials {
@@ -648,39 +674,47 @@
                 <div class="mobile-menu">☰</div>
                 <nav>
                     <ul>
-                        <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#about">من نحن</a></li>
-                        <li><a href="#services">خدماتنا</a></li>
-                        <li><a href="#transfer">تحويل الأموال</a></li>
-                        <li><a href="#payment">طرق الدفع</a></li>
-                        <li><a href="#reviews">تقييمات العملاء</a></li>
-                        <li><a href="#app">التطبيق</a></li>
-                        <li><a href="#contact">اتصل بنا</a></li>
+                        <li><a href="#home" class="nav-link">الرئيسية</a></li>
+                        <li><a href="#about" class="nav-link">من نحن</a></li>
+                        <li><a href="#services" class="nav-link">خدماتنا</a></li>
+                        <li><a href="#transfer" class="nav-link">تحويل الأموال</a></li>
+                        <li><a href="#payment" class="nav-link">طرق الدفع</a></li>
+                        <li><a href="#reviews" class="nav-link">تقييمات العملاء</a></li>
+                        <li><a href="#app" class="nav-link">التطبيق</a></li>
+                        <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
                     </ul>
                 </nav>
+                <div class="lang-toggle">
+                    <span id="lang-text">AR</span>
+                    <i class="fas fa-globe"></i>
+                </div>
             </div>
         </div>
     </header>
     <!-- Hero -->
     <section class="hero fade-in" id="home">
         <div class="container">
-            <h1>بوابة الدفع الإلكتروني والشحن العالمية</h1>
-            <p>نقدم حلول دفع إلكتروني آمنة وسريعة مع خدمة شحن الألعاب لجميع دول العالم. استمتع بتجربة تسوق رقمية متكاملة مع دعم جميع طرق الدفع المحلية والعالمية.</p>
-            <a href="#services" class="btn btn-primary">اكتشف خدماتنا</a>
+            <h1 id="hero-title">بوابة الدفع الإلكتروني والشحن العالمية</h1>
+            <p id="hero-desc">نقدم حلول دفع إلكتروني آمنة وسريعة مع خدمة شحن الألعاب لجميع دول العالم. استمتع بتجربة تسوق رقمية متكاملة مع دعم جميع طرق الدفع المحلية والعالمية.</p>
+            <a href="#services" class="btn btn-primary" id="discover-btn">اكتشف خدماتنا</a>
+            <div class="visitor-counter fade-in">
+                <div class="counter-text" id="visitor-text">عدد زوار الموقع</div>
+                <div class="counter-number" id="visitorCounter">1,234,567</div>
+            </div>
         </div>
     </section>
     <!-- About -->
     <section id="about">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>من نحن</h2>
+                <h2 id="about-title">من نحن</h2>
             </div>
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <h3>رؤيتنا ورسالتنا</h3>
-                    <p>نحن شركة رائدة في مجال الدفع الإلكتروني وشحن الألعاب، نقدم حلولاً متكاملة لعملائنا في جميع أنحاء العالم. تأسست شركتنا برؤية واضحة وهي تبسيط عمليات الدفع والشحن الرقمية.</p>
-                    <p>نفخر بتقديم خدماتنا لأكثر من 50 دولة حول العالم، مع دعم جميع طرق الدفع المحلية والعالمية الشهيرة. فريقنا من المحترفين يعمل باستمرار على تطوير وتحسين خدماتنا لتلبية احتياجات عملائنا.</p>
-                    <p>نؤمن بأن تجربة الدفع والشحن يجب أن تكون سلسة وآمنة، وهذا بالضبط ما نوفره لعملائنا الكرام.</p>
+                    <h3 id="vision-title">رؤيتنا ورسالتنا</h3>
+                    <p id="vision-desc1">نحن شركة رائدة في مجال الدفع الإلكتروني وشحن الألعاب، نقدم حلولاً متكاملة لعملائنا في جميع أنحاء العالم. تأسست شركتنا برؤية واضحة وهي تبسيط عمليات الدفع والشحن الرقمية.</p>
+                    <p id="vision-desc2">nfchr bthdyd lmzyd mn lxdmth l'aktr mn 50 dwlh 'wl l'l'm. frqna mn lmhtrfyn y'ml 'ly ttrwr wthsyn xdmthna ltlbyt htyajt 'ml'ana lkr'm.</p>
+                    <p id="vision-desc3">n'mn 'n tgrbt ldf' wlshn yjb 'n tkwn slst w'mnt, wdh lmza nf'rh l'ml'ana lkr'm.</p>
                 </div>
                 <div class="about-image fade-in">
                     <img src="https://k.top4top.io/p_3555j1qbz1.png" alt="فريق DREAM SHOPPING">
@@ -692,60 +726,51 @@
     <section class="services" id="services">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>خدماتنا</h2>
+                <h2 id="services-title">خدماتنا</h2>
             </div>
             <div class="services-grid">
                 <div class="service-card fade-in">
                     <div class="service-icon">
                         <i class="fas fa-credit-card"></i>
                     </div>
-                    <h3>الدفع الإلكتروني</h3>
-                    <p>نقدم حلول دفع إلكتروني آمنة وسريعة مع تشفير متقدم لحماية بياناتك المالية.</p>
+                    <h3 id="service1-title">الدفع الإلكتروني</h3>
+                    <p id="service1-desc">نقدم حلول دفع إلكتروني آمنة وسريعة مع تشفير متقدم لحماية بياناتك المالية.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">
                         <i class="fas fa-gamepad"></i>
                     </div>
-                    <h3>شحن الألعاب</h3>
-                    <p>خدمة شحن سريعة وموثوقة للألعاب لجميع دول العالم.</p>
+                    <h3 id="service2-title">شحن الألعاب</h3>
+                    <p id="service2-desc">خدمة شحن سريعة وموثوقة للألعاب لجميع دول العالم.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">
                         <i class="fas fa-globe"></i>
                     </div>
-                    <h3>خدمة عالمية</h3>
-                    <p>نخدم عملاءنا في أكثر من 50 دولة حول العالم.</p>
+                    <h3 id="service3-title">خدمة عالمية</h3>
+                    <p id="service3-desc">نخدم عملاءنا في أكثر من 50 دولة حول العالم.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>أمان متكامل</h3>
-                    <p>نظام أمان متكامل يحمي معاملاتك وبياناتك.</p>
+                    <h3 id="service4-title">أمان متكامل</h3>
+                    <p id="service4-desc">نظام أمان متكامل يحمي معاملاتك وبياناتك.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>تطبيق جوال</h3>
-                    <p>تطبيق أندرويد متكامل لإدارة مدفوعاتك ومتابعة شحناتك.</p>
+                    <h3 id="service5-title">تطبيق جوال</h3>
+                    <p id="service5-desc">تطبيق أندرويد متكامل لإدارة مدفوعاتك ومتابعة شحناتك.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">
                         <i class="fas fa-headset"></i>
                     </div>
-                    <h3>ضمان الخدمة</h3>
-                    <p>دعم فني متاح على مدار الساعة لمساعدتك في أي استفسار.</p>
+                    <h3 id="service6-title">ضمان الخدمة</h3>
+                    <p id="service6-desc">دعم فني متاح على مدار الساعة لمساعدتك في أي استفسار.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- Visitor Counter -->
-    <section class="visitor-counter-section">
-        <div class="container">
-            <div class="visitor-counter fade-in">
-                <div class="counter-text">عدد زوار الموقع</div>
-                <div class="counter-number" id="visitorCounter">1,234,567</div>
             </div>
         </div>
     </section>
@@ -753,15 +778,16 @@
     <section class="transfer-section" id="transfer">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>تحويل الأموال</h2>
+                <h2 id="transfer-title">تحويل الأموال</h2>
             </div>
             <div class="transfer-content">
                 <div class="transfer-text fade-in">
-                    <h3>تحويل الأموال بسهولة وأمان</h3>
-                    <p>نقدم خدمة تحويل الأموال المحلية والعالمية بسرعة وأمان تام. استمتع بتحويل الأموال إلى أي مكان في العالم بكل سهولة.</p>
-                    <button id="showTransferFrame" class="btn btn-primary">ابدأ تحويل الأموال</button>
+                    <h3 id="transfer-subtitle">تحويل الأموال بسهولة وأمان</h3>
+                    <p id="transfer-desc">نقدم خدمة تحويل الأموال المحلية والعالمية بسرعة وأمان تام. استمتع بتحويل الأموال إلى أي مكان في العالم بكل سهولة.</p>
+                    <button id="showTransferFrame" class="btn btn-primary" style="display: block;">ابدأ تحويل الأموال</button>
                 </div>
                 <iframe class="transfer-frame" id="transferFrame" src="https://kimorofe.github.io/Dream-Shopping.Pay/"></iframe>
+                <button class="close-transfer" id="closeTransferFrame"><i class="fas fa-times"></i></button>
             </div>
         </div>
     </section>
@@ -769,10 +795,10 @@
     <section id="payment">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>طرق الدفع المدعومة</h2>
+                <h2 id="payment-title">طرق الدفع المدعومة</h2>
             </div>
             <div class="payment-methods fade-in">
-                <p>ندعم جميع طرق الدفع المحلية والعالمية الشهيرة لتوفير أقصى درجات الراحة لأعضائنا</p>
+                <p id="payment-desc">ندعم جميع طرق الدفع المحلية والعالمية الشهيرة لتوفير أقصى درجات الراحة لأعضائنا</p>
                 <div class="payment-logos">
                     <div class="payment-logo"><span style="color: #e60023;">Vodafone Cash</span></div>
                     <div class="payment-logo"><span style="color: #0052FF;">InstaPay</span></div>
@@ -787,7 +813,7 @@
     <section class="testimonials" id="reviews">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>تقييمات عملائنا</h2>
+                <h2 id="reviews-title">تقييمات عملائنا</h2>
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card fade-in">
@@ -798,10 +824,10 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="testimonial-text">
+                    <div class="testimonial-text" id="testimonial1">
                         "خدمتهم ممتازة جداً، تحويلات سريعة وآمنة، والدعم الفني متابع كل دقيقة. شكراً DREAM SHOPPING!"
                     </div>
-                    <div class="testimonial-author">أحمد محمود - القاهرة</div>
+                    <div class="testimonial-author" id="testimonial1-author">أحمد محمود - القاهرة</div>
                 </div>
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-stars">
@@ -811,10 +837,10 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <div class="testimonial-text">
+                    <div class="testimonial-text" id="testimonial2">
                         "من أفضل الشركات اللي تعاملت معها في شحن الألعاب، الأسعار مناسبة والسرعة فائقة. أنصح الجميع بالتعامل معهم."
                     </div>
-                    <div class="testimonial-author">منى علي - الإسكندرية</div>
+                    <div class="testimonial-author" id="testimonial2-author">منى علي - الإسكندرية</div>
                 </div>
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-stars">
@@ -824,10 +850,10 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="testimonial-text">
+                    <div class="testimonial-text" id="testimonial3">
                         "الدفع الإلكتروني عندهم سهل جداً، وبتقبل كل طرق الدفع المحلية. أنا شخصياً بستخدم فودافون كاش وبتتم المعاملة في ثواني!"
                     </div>
-                    <div class="testimonial-author">محمود حسن - الجيزة</div>
+                    <div class="testimonial-author" id="testimonial3-author">محمود حسن - الجيزة</div>
                 </div>
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-stars">
@@ -837,10 +863,10 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="testimonial-text">
+                    <div class="testimonial-text" id="testimonial4">
                         "التطبيق سهل جداً، وبتستطيع متابعة كل عملياتك من خلاله. الدعم الفني رد علي في أقل من 5 دقائق!"
                     </div>
-                    <div class="testimonial-author">نورهان محمد - المنصورة</div>
+                    <div class="testimonial-author" id="testimonial4-author">نورهان محمد - المنصورة</div>
                 </div>
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-stars">
@@ -850,10 +876,10 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                     </div>
-                    <div class="testimonial-text">
+                    <div class="testimonial-text" id="testimonial5">
                         "الخدمة ممتازة، بس أحيانا بيكون فيه تأخير في تحويلات العملات الأجنبية. لكن بشكل عام أنا راضي جداً."
                     </div>
-                    <div class="testimonial-author">علي محمود - بورسعيد</div>
+                    <div class="testimonial-author" id="testimonial5-author">علي محمود - بورسعيد</div>
                 </div>
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-stars">
@@ -863,10 +889,10 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="testimonial-text">
+                    <div class="testimonial-text" id="testimonial6">
                         "أفضل شركة شحن ألعاب في مصر! الأسعار مناسبة جداً، والسرعة فائقة. شكراً على الجودة!"
                     </div>
-                    <div class="testimonial-author">ياسمين أحمد - الإسماعيلية</div>
+                    <div class="testimonial-author" id="testimonial6-author">ياسمين أحمد - الإسماعيلية</div>
                 </div>
             </div>
         </div>
@@ -875,24 +901,24 @@
     <section class="app-section" id="app">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>تطبيق DREAM SHOPPING</h2>
+                <h2 id="app-title">تطبيق DREAM SHOPPING</h2>
             </div>
             <div class="app-content">
                 <div class="app-image fade-in">
                     <img src="https://g.top4top.io/p_3555yfk2r1.png" alt="تطبيق DREAM SHOPPING">
                 </div>
                 <div class="app-text fade-in">
-                    <h3>حمّل تطبيقنا الآن</h3>
-                    <p>تمتع بتجربة دفع وشحن سلسة مع تطبيق DREAM SHOPPING المخصص لهواتف الأندرويد.</p>
+                    <h3 id="app-subtitle">حمّل تطبيقنا الآن</h3>
+                    <p id="app-desc">تمتع بتجربة دفع وشحن سلسة مع تطبيق DREAM SHOPPING المخصص لهواتف الأندرويد.</p>
                     <ul>
-                        <li>إدارة جميع معاملاتك المالية بسهولة</li>
-                        <li>متابعة حالة شحناتك في الوقت الفعلي</li>
-                        <li>استخدام جميع طرق الدفع المدعومة</li>
-                        <li>الحصول على دعم فني مباشر</li>
-                        <li>الاستفادة من العروض الحصرية لأعضاء التطبيق</li>
+                        <li id="app-feature1">إدارة جميع معاملاتك المالية بسهولة</li>
+                        <li id="app-feature2">متابعة حالة شحناتك في الوقت الفعلي</li>
+                        <li id="app-feature3">استخدام جميع طرق الدفع المدعومة</li>
+                        <li id="app-feature4">الحصول على دعم فني مباشر</li>
+                        <li id="app-feature5">الاستفادة من العروض الحصرية لأعضاء التطبيق</li>
                     </ul>
                     <div class="app-download">
-                        <a href="https://apk.e-droid.net/apk/app2305745-nf2mxh.apk?v=44" class="btn btn-primary">حمّل التطبيق الآن</a>
+                        <a href="https://apk.e-droid.net/apk/app2305745-nf2mxh.apk?v=44" class="btn btn-primary" id="download-btn">حمّل التطبيق الآن</a>
                     </div>
                 </div>
             </div>
@@ -904,7 +930,7 @@
             <div class="footer-content">
                 <div class="footer-column fade-in">
                     <h3>DREAM SHOPPING</h3>
-                    <p>شركة رائدة في مجال الدفع الإلكتروني وشحن الألعاب لجميع دول العالم.</p>
+                    <p id="footer-desc">شركة رائدة في مجال الدفع الإلكتروني وشحن الألعاب لجميع دول العالم.</p>
                     <div class="social-links">
                         <a href="https://wa.me/message/ZAMCJ2OF2SB4A1" title="واتساب"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.facebook.com/share/1CsrZtmKKK/" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
@@ -912,38 +938,38 @@
                     </div>
                 </div>
                 <div class="footer-column fade-in">
-                    <h3>روابط سريعة</h3>
+                    <h3 id="footer-links-title">روابط سريعة</h3>
                     <ul>
-                        <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#about">من نحن</a></li>
-                        <li><a href="#services">خدماتنا</a></li>
-                        <li><a href="#transfer">تحويل الأموال</a></li>
-                        <li><a href="#payment">طرق الدفع</a></li>
-                        <li><a href="#reviews">تقييمات العملاء</a></li>
-                        <li><a href="#app">التطبيق</a></li>
+                        <li><a href="#home" id="footer-link1">الرئيسية</a></li>
+                        <li><a href="#about" id="footer-link2">من نحن</a></li>
+                        <li><a href="#services" id="footer-link3">خدماتنا</a></li>
+                        <li><a href="#transfer" id="footer-link4">تحويل الأموال</a></li>
+                        <li><a href="#payment" id="footer-link5">طرق الدفع</a></li>
+                        <li><a href="#reviews" id="footer-link6">تقييمات العملاء</a></li>
+                        <li><a href="#app" id="footer-link7">التطبيق</a></li>
                     </ul>
                 </div>
                 <div class="footer-column fade-in">
-                    <h3>خدماتنا</h3>
+                    <h3 id="footer-services-title">خدماتنا</h3>
                     <ul>
-                        <li><a href="#services">الدفع الإلكتروني</a></li>
-                        <li><a href="#services">شحن الألعاب</a></li>
-                        <li><a href="https://wa.me/message/ZAMCJ2OF2SB4A1">الدعم الفني</a></li>
-                        <li><a href="#about">الأسئلة الشائعة</a></li>
-                        <li><a href="#">الشروط والأحكام</a></li>
+                        <li><a href="#services" id="footer-service1">الدفع الإلكتروني</a></li>
+                        <li><a href="#services" id="footer-service2">شحن الألعاب</a></li>
+                        <li><a href="https://wa.me/message/ZAMCJ2OF2SB4A1" id="footer-service3">الدعم الفني</a></li>
+                        <li><a href="#about" id="footer-service4">الأسئلة الشائعة</a></li>
+                        <li><a href="#" id="footer-service5">الشروط والأحكام</a></li>
                     </ul>
                 </div>
                 <div class="footer-column fade-in">
-                    <h3>اتصل بنا</h3>
+                    <h3 id="footer-contact-title">اتصل بنا</h3>
                     <ul>
-                        <li>البريد الإلكتروني: helpapersonality@gmail.com</li>
-                        <li>الهاتف: +01090470326</li>
-                        <li>العنوان: القاهرة، مصر</li>
+                        <li id="footer-contact1">البريد الإلكتروني: helpapersonality@gmail.com</li>
+                        <li id="footer-contact2">الهاتف: +01090470326</li>
+                        <li id="footer-contact3">العنوان: القاهرة، مصر</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>جميع الحقوق محفوظة &copy; 2018-2025 DREAM SHOPPING</p>
+                <p id="copyright-text">جميع الحقوق محفوظة &copy; 2018-2025 DREAM SHOPPING</p>
             </div>
         </div>
     </footer>
@@ -1000,18 +1026,20 @@
         // Transfer Frame Toggle
         const showTransferFrameBtn = document.getElementById('showTransferFrame');
         const transferFrame = document.getElementById('transferFrame');
-        const closeTransferBtn = document.createElement('button');
-        closeTransferBtn.className = 'close-transfer';
-        closeTransferBtn.innerHTML = '<i class="fas fa-times"></i>';
-        transferFrame.appendChild(closeTransferBtn);
+        const closeTransferBtn = document.getElementById('closeTransferFrame');
+
         showTransferFrameBtn.addEventListener('click', function() {
             transferFrame.classList.add('active');
             showTransferFrameBtn.style.display = 'none';
+            closeTransferBtn.classList.add('active');
         });
+
         closeTransferBtn.addEventListener('click', function() {
             transferFrame.classList.remove('active');
             showTransferFrameBtn.style.display = 'block';
+            closeTransferBtn.classList.remove('active');
         });
+
         // Visitor Counter Animation
         function animateCounter() {
             const counter = document.getElementById('visitorCounter');
@@ -1029,6 +1057,98 @@
             }, 16);
         }
         animateCounter();
+
+        // Language Toggle
+        const langToggle = document.querySelector('.lang-toggle');
+        const langText = document.getElementById('lang-text');
+        let isEnglish = false;
+
+        const translations = {
+            "hero-title": { ar: "بوابة الدفع الإلكتروني والشحن العالمية", en: "Global Electronic Payment & Shipping Gateway" },
+            "hero-desc": { ar: "نقدم حلول دفع إلكتروني آمنة وسريعة مع خدمة شحن الألعاب لجميع دول العالم. استمتع بتجربة تسوق رقمية متكاملة مع دعم جميع طرق الدفع المحلية والعالمية.", en: "We provide secure and fast electronic payment solutions with game shipping services worldwide. Enjoy a seamless digital shopping experience with support for all local and global payment methods." },
+            "discover-btn": { ar: "اكتشف خدماتنا", en: "Discover Our Services" },
+            "about-title": { ar: "من نحن", en: "About Us" },
+            "vision-title": { ar: "رؤيتنا ورسالتنا", en: "Our Vision & Mission" },
+            "vision-desc1": { ar: "نحن شركة رائدة في مجال الدفع الإلكتروني وشحن الألعاب، نقدم حلولاً متكاملة لعملائنا في جميع أنحاء العالم. تأسست شركتنا برؤية واضحة وهي تبسيط عمليات الدفع والشحن الرقمية.", en: "We are a leading company in electronic payments and game shipping, providing comprehensive solutions to our customers worldwide. Our company was founded with a clear vision to simplify digital payment and shipping processes." },
+            "vision-desc2": { ar: "nfchr bthdyd lmzyd mn lxdmth l'aktr mn 50 dwlh 'wl l'l'm. frqna mn lmhtrfyn y'ml 'ly ttrwr wthsyn xdmthna ltlbyt htyajt 'ml'ana lkr'm.", en: "We proudly serve over 50 countries worldwide. Our team of professionals constantly works to develop and improve our services to meet the needs of our valued customers." },
+            "vision-desc3": { ar: "n'mn 'n tgrbt ldf' wlshn yjb 'n tkwn slst w'mnt, wdh lmza nf'rh l'ml'ana lkr'm.", en: "We believe that the payment and shipping experience should be smooth and secure, and that is exactly what we provide to our valued customers." },
+            "services-title": { ar: "خدماتنا", en: "Our Services" },
+            "service1-title": { ar: "الدفع الإلكتروني", en: "Electronic Payment" },
+            "service1-desc": { ar: "نقدم حلول دفع إلكتروني آمنة وسريعة مع تشفير متقدم لحماية بياناتك المالية.", en: "We provide secure and fast electronic payment solutions with advanced encryption to protect your financial data." },
+            "service2-title": { ar: "شحن الألعاب", en: "Game Shipping" },
+            "service2-desc": { ar: "خدمة شحن سريعة وموثوقة للألعاب لجميع دول العالم.", en: "Fast and reliable game shipping service worldwide." },
+            "service3-title": { ar: "خدمة عالمية", en: "Global Service" },
+            "service3-desc": { ar: "نخدم عملاءنا في أكثر من 50 دولة حول العالم.", en: "We serve our customers in over 50 countries worldwide." },
+            "service4-title": { ar: "أمان متكامل", en: "Comprehensive Security" },
+            "service4-desc": { ar: "نظام أمان متكامل يحمي معاملاتك وبياناتك.", en: "An integrated security system that protects your transactions and data." },
+            "service5-title": { ar: "تطبيق جوال", en: "Mobile App" },
+            "service5-desc": { ar: "تطبيق أندرويد متكامل لإدارة مدفوعاتك ومتابعة شحناتك.", en: "An integrated Android app to manage your payments and track your shipments." },
+            "service6-title": { ar: "ضمان الخدمة", en: "Service Guarantee" },
+            "service6-desc": { ar: "دعم فني متاح على مدار الساعة لمساعدتك في أي استفسار.", en: "24/7 technical support to assist you with any inquiry." },
+            "transfer-title": { ar: "تحويل الأموال", en: "Money Transfer" },
+            "transfer-subtitle": { ar: "تحويل الأموال بسهولة وأمان", en: "Transfer Money Easily and Securely" },
+            "transfer-desc": { ar: "نقدم خدمة تحويل الأموال المحلية والعالمية بسرعة وأمان تام. استمتع بتحويل الأموال إلى أي مكان في العالم بكل سهولة.", en: "We provide local and international money transfer services with speed and complete security. Enjoy transferring money anywhere in the world with ease." },
+            "showTransferFrame": { ar: "ابدأ تحويل الأموال", en: "Start Money Transfer" },
+            "payment-title": { ar: "طرق الدفع المدعومة", en: "Supported Payment Methods" },
+            "payment-desc": { ar: "ندعم جميع طرق الدفع المحلية والعالمية الشهيرة لتوفير أقصى درجات الراحة لأعضائنا", en: "We support all popular local and global payment methods to provide the utmost convenience for our members" },
+            "reviews-title": { ar: "تقييمات عملائنا", en: "Customer Reviews" },
+            "testimonial1": { ar: "خدمتهم ممتازة جداً، تحويلات سريعة وآمنة، والدعم الفني متابع كل دقيقة. شكراً DREAM SHOPPING!", en: "Their service is excellent, fast and secure transfers, and technical support is available every minute. Thank you DREAM SHOPPING!" },
+            "testimonial1-author": { ar: "أحمد محمود - القاهرة", en: "Ahmed Mahmoud - Cairo" },
+            "testimonial2": { ar: "من أفضل الشركات اللي تعاملت معها في شحن الألعاب، الأسعار مناسبة والسرعة فائقة. أنصح الجميع بالتعامل معهم.", en: "One of the best companies I have dealt with in game shipping, the prices are reasonable and the speed is amazing. I recommend everyone to deal with them." },
+            "testimonial2-author": { ar: "منى علي - الإسكندرية", en: "Mona Ali - Alexandria" },
+            "testimonial3": { ar: "الدفع الإلكتروني عندهم سهل جداً، وبتقبل كل طرق الدفع المحلية. أنا شخصياً بستخدم فودافون كاش وبتتم المعاملة في ثواني!", en: "Their electronic payment is very easy, and they accept all local payment methods. I personally use Vodafone Cash and the transaction is completed in seconds!" },
+            "testimonial3-author": { ar: "محمود حسن - الجيزة", en: "Mahmoud Hassan - Giza" },
+            "testimonial4": { ar: "التطبيق سهل جداً، وبتستطيع متابعة كل عملياتك من خلاله. الدعم الفني رد علي في أقل من 5 دقائق!", en: "The app is very easy, and you can follow up on all your transactions through it. Technical support responded to me in less than 5 minutes!" },
+            "testimonial4-author": { ar: "نورهان محمد - المنصورة", en: "Nourhan Mohamed - Mansoura" },
+            "testimonial5": { ar: "الخدمة ممتازة، بس أحيانا بيكون فيه تأخير في تحويلات العملات الأجنبية. لكن بشكل عام أنا راضي جداً.", en: "The service is excellent, but sometimes there is a delay in foreign currency transfers. But overall, I am very satisfied." },
+            "testimonial5-author": { ar: "علي محمود - بورسعيد", en: "Ali Mahmoud - Port Said" },
+            "testimonial6": { ar: "أفضل شركة شحن ألعاب في مصر! الأسعار مناسبة جداً، والسرعة فائقة. شكراً على الجودة!", en: "The best game shipping company in Egypt! The prices are very reasonable, and the speed is amazing. Thank you for the quality!" },
+            "testimonial6-author": { ar: "ياسمين أحمد - الإسماعيلية", en: "Yasmin Ahmed - Ismailia" },
+            "app-title": { ar: "تطبيق DREAM SHOPPING", en: "DREAM SHOPPING App" },
+            "app-subtitle": { ar: "حمّل تطبيقنا الآن", en: "Download Our App Now" },
+            "app-desc": { ar: "تمتع بتجربة دفع وشحن سلسة مع تطبيق DREAM SHOPPING المخصص لهواتف الأندرويد.", en: "Enjoy a seamless payment and shipping experience with the DREAM SHOPPING app designed for Android phones." },
+            "app-feature1": { ar: "إدارة جميع معاملاتك المالية بسهولة", en: "Easily manage all your financial transactions" },
+            "app-feature2": { ar: "متابعة حالة شحناتك في الوقت الفعلي", en: "Track the status of your shipments in real time" },
+            "app-feature3": { ar: "استخدام جميع طرق الدفع المدعومة", en: "Use all supported payment methods" },
+            "app-feature4": { ar: "الحصول على دعم فني مباشر", en: "Get direct technical support" },
+            "app-feature5": { ar: "الاستفادة من العروض الحصرية لأعضاء التطبيق", en: "Benefit from exclusive offers for app members" },
+            "download-btn": { ar: "حمّل التطبيق الآن", en: "Download Now" },
+            "footer-desc": { ar: "شركة رائدة في مجال الدفع الإلكتروني وشحن الألعاب لجميع دول العالم.", en: "A leading company in electronic payments and game shipping for all countries of the world." },
+            "footer-links-title": { ar: "روابط سريعة", en: "Quick Links" },
+            "footer-link1": { ar: "الرئيسية", en: "Home" },
+            "footer-link2": { ar: "من نحن", en: "About Us" },
+            "footer-link3": { ar: "خدماتنا", en: "Our Services" },
+            "footer-link4": { ar: "تحويل الأموال", en: "Money Transfer" },
+            "footer-link5": { ar: "طرق الدفع", en: "Payment Methods" },
+            "footer-link6": { ar: "تقييمات العملاء", en: "Customer Reviews" },
+            "footer-link7": { ar: "التطبيق", en: "App" },
+            "footer-services-title": { ar: "خدماتنا", en: "Our Services" },
+            "footer-service1": { ar: "الدفع الإلكتروني", en: "Electronic Payment" },
+            "footer-service2": { ar: "شحن الألعاب", en: "Game Shipping" },
+            "footer-service3": { ar: "الدعم الفني", en: "Technical Support" },
+            "footer-service4": { ar: "الأسئلة الشائعة", en: "FAQ" },
+            "footer-service5": { ar: "الشروط والأحكام", en: "Terms & Conditions" },
+            "footer-contact-title": { ar: "اتصل بنا", en: "Contact Us" },
+            "footer-contact1": { ar: "البريد الإلكتروني: helpapersonality@gmail.com", en: "Email: helpapersonality@gmail.com" },
+            "footer-contact2": { ar: "الهاتف: +01090470326", en: "Phone: +01090470326" },
+            "footer-contact3": { ar: "العنوان: القاهرة، مصر", en: "Address: Cairo, Egypt" },
+            "copyright-text": { ar: "جميع الحقوق محفوظة &copy; 2018-2025 DREAM SHOPPING", en: "All rights reserved &copy; 2018-2025 DREAM SHOPPING" },
+            "visitor-text": { ar: "عدد زوار الموقع", en: "Website Visitors" }
+        };
+
+        langToggle.addEventListener('click', function() {
+            isEnglish = !isEnglish;
+            langText.textContent = isEnglish ? 'EN' : 'AR';
+            document.documentElement.setAttribute('lang', isEnglish ? 'en' : 'ar');
+            document.documentElement.setAttribute('dir', isEnglish ? 'ltr' : 'rtl');
+
+            for (const [id, translation] of Object.entries(translations)) {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = isEnglish ? translation.en : translation.ar;
+                }
+            }
+        });
     </script>
 </body>
 </html>
