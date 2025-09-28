@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <!-- جميع محتويات الـ head تبقى كما هي -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DREAM SHOPPING - شركة الدفع الإلكتروني والشحن</title>
@@ -693,6 +694,132 @@
         .app-download {
             margin-top: 20px;
         }
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--light-bg);
+            padding: clamp(50px, 10vh, 80px) 0;
+        }
+        body.dark-mode .faq-section {
+            background-color: var(--dark-bg);
+        }
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .faq {
+            background-color: var(--white);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--medium-gray);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        body.dark-mode .faq {
+            background-color: var(--dark-surface);
+        }
+        .faq.active {
+            border-left-color: var(--primary-color);
+            background-color: var(--white);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.1);
+        }
+        body.dark-mode .faq.active {
+            background-color: var(--dark-surface);
+        }
+        .faq.active::before {
+            content: '\f086';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary-color);
+            font-size: 4rem;
+            position: absolute;
+            opacity: 0.05;
+            top: 10px;
+            right: 15px;
+            z-index: 0;
+        }
+        .faq-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0;
+            color: var(--text-color);
+            position: relative;
+            z-index: 1;
+            padding-right: 30px;
+            line-height: 1.4;
+        }
+        body.dark-mode .faq-title {
+            color: var(--dark-text);
+        }
+        .faq.active .faq-title {
+            color: var(--primary-color);
+        }
+        .faq-text {
+            display: none;
+            margin-top: 15px;
+            color: var(--dark-gray);
+            position: relative;
+            z-index: 1;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        body.dark-mode .faq-text {
+            color: var(--dark-text);
+        }
+        .faq.active .faq-text {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        .faq-toggle {
+            background-color: var(--medium-gray);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            padding: 0;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            height: 25px;
+            width: 25px;
+            transition: var(--transition);
+        }
+        .faq-toggle:focus {
+            outline: none;
+        }
+        .faq-toggle .fa-chevron-down {
+            transition: var(--transition);
+            font-size: 0.8rem;
+        }
+        .faq-toggle .fa-times {
+            display: none;
+            color: white;
+            font-size: 0.8rem;
+        }
+        .faq.active .faq-toggle {
+            background-color: var(--primary-color);
+        }
+        .faq.active .faq-toggle .fa-chevron-down {
+            display: none;
+        }
+        .faq.active .faq-toggle .fa-times {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         /* Footer */
         footer {
             background: linear-gradient(135deg, #1a1a1a, #222);
@@ -904,8 +1031,9 @@
                         <li><a href="#transfer" class="nav-link" id="nav-link4">تحويل الأموال</a></li>
                         <li><a href="#payment" class="nav-link" id="nav-link5">طرق الدفع</a></li>
                         <li><a href="#partners" class="nav-link" id="nav-link9">شركاؤنا</a></li>
-                        <li><a href="#reviews" class="nav-link" id="nav-link6">تقييمات العملاء</a></li>
                         <li><a href="#app" class="nav-link" id="nav-link7">التطبيق</a></li>
+                        <li><a href="#faq" class="nav-link" id="nav-link10">الأسئلة الشائعة</a></li>
+                        <li><a href="#reviews" class="nav-link" id="nav-link6">تقييمات العملاء</a></li>
                         <li><a href="#contact" class="nav-link" id="nav-link8">اتصل بنا</a></li>
                     </ul>
                 </nav>
@@ -920,7 +1048,6 @@
             </div>
         </div>
     </header>
-
     <!-- Hero -->
     <section class="hero fade-in" id="home">
         <div class="container">
@@ -933,7 +1060,6 @@
             </div>
         </div>
     </section>
-
     <!-- About -->
     <section id="about">
         <div class="container">
@@ -953,7 +1079,6 @@
             </div>
         </div>
     </section>
-
     <!-- Services -->
     <section class="services" id="services">
         <div class="container">
@@ -1006,7 +1131,6 @@
             </div>
         </div>
     </section>
-
     <!-- Transfer Section -->
     <section class="transfer-section" id="transfer">
         <div class="container">
@@ -1025,7 +1149,6 @@
             </div>
         </div>
     </section>
-
     <!-- Partners Section -->
     <section class="partners" id="partners">
         <div class="container">
@@ -1083,7 +1206,7 @@
                             <div class="partner-logo">
                                 <img src="https://k.top4top.io/p_3558eyz0s5.png" alt="وي كاش">
                             </div>
-                                                        <div class="partner-logo">
+                            <div class="partner-logo">
                                 <img src="https://l.top4top.io/p_35583z1sk6.png" alt="نتفلكس">
                             </div>
                         </div>
@@ -1097,7 +1220,6 @@
             </div>
         </div>
     </section>
-
     <!-- Payment -->
     <section id="payment">
         <div class="container">
@@ -1129,7 +1251,6 @@
             </div>
         </div>
     </section>
-
     <!-- Testimonials -->
     <section class="testimonials" id="reviews">
         <div class="container">
@@ -1218,7 +1339,6 @@
             </div>
         </div>
     </section>
-
     <!-- App Section -->
     <section class="app-section" id="app">
         <div class="container">
@@ -1265,7 +1385,72 @@
             </div>
         </div>
     </section>
-
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2 id="faq-title">الأسئلة الشائعة</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq active">
+                    <h3 class="faq-title" id="faq-question1">هل يوجد شركات أخرى تتعلق بالتطبيق؟</h3>
+                    <p class="faq-text" id="faq-answer1">ليس لدينا أي شركات أخرى تتعلق بشركتنا إلا إذا تم الإعلان عنها داخل التطبيق.</p>
+                    <button class="faq-toggle" aria-label="تبديل عرض السؤال">
+                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="faq">
+                    <h3 class="faq-title" id="faq-question2">هل يوجد وسيلة اتصال بخدمة العملاء؟</h3>
+                    <p class="faq-text" id="faq-answer2">نعم، لدينا وسيلتان للاتصال: زر الواتساب أسفل الشاشة أو زر "المزيد" داخل التطبيق.</p>
+                    <button class="faq-toggle" aria-label="تبديل عرض السؤال">
+                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="faq">
+                    <h3 class="faq-title" id="faq-question3">ما هي مدة تنفيذ طلب المنتج الذي طلبته؟</h3>
+                    <p class="faq-text" id="faq-answer3">مدة تنفيذ طلبك تستغرق 30 دقيقة كحد أقصى، وهذا يختلف من منتج لآخر.</p>
+                    <button class="faq-toggle" aria-label="تبديل عرض السؤال">
+                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="faq">
+                    <h3 class="faq-title" id="faq-question4">إذا كان يوجد خطأ بالمنتج أو تأخر بالتسليم، ماذا أفعل؟</h3>
+                    <p class="faq-text" id="faq-answer4">اتصل بخدمة العملاء عبر الواتساب أو من داخل التطبيق، وسنقوم بحل المشكلة في أسرع وقت.</p>
+                    <button class="faq-toggle" aria-label="تبديل عرض السؤال">
+                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="faq">
+                    <h3 class="faq-title" id="faq-question5">هل يوجد بريد إلكتروني خاص بالشركة؟</h3>
+                    <p class="faq-text" id="faq-answer5">نعم، هذا هو البريد الإلكتروني الرسمي للشركة: helpapersonality@gmail.com.</p>
+                    <button class="faq-toggle" aria-label="تبديل عرض السؤال">
+                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="faq">
+                    <h3 class="faq-title" id="faq-question6">هل يوجد أرقام هواتف للتواصل؟</h3>
+                    <p class="faq-text" id="faq-answer6">نعم، لدينا رقم للتواصل عبر الواتساب فقط: +201090470326.</p>
+                    <button class="faq-toggle" aria-label="تبديل عرض السؤال">
+                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="faq">
+                    <h3 class="faq-title" id="faq-question7">لو أنا خارج مصر وعايز أدفع اشتراك أو استخدم منتج دولي، أدفع إزاي؟</h3>
+                    <p class="faq-text" id="faq-answer7">المنتجات المتاحة لجميع الدول يمكن الدفع عنها عبر باي بال أو بايير، أو التواصل مع خدمة العملاء لمعرفة المزيد.</p>
+                    <button class="faq-toggle" aria-label="تبديل عرض السؤال">
+                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -1286,6 +1471,7 @@
                         <li><a href="#about" id="footer-link2">من نحن</a></li>
                         <li><a href="#services" id="footer-link3">خدماتنا</a></li>
                         <li><a href="#transfer" id="footer-link4">تحويل الأموال</a></li>
+                        <li><a href="#faq" id="footer-link10">الأسئلة الشائعة</a></li>
                         <li><a href="#partners" id="footer-link9">شركاؤنا</a></li>
                         <li><a href="#payment" id="footer-link5">طرق الدفع</a></li>
                         <li><a href="#reviews" id="footer-link6">تقييمات العملاء</a></li>
@@ -1298,7 +1484,7 @@
                         <li><a href="#services" id="footer-service1">الدفع الإلكتروني</a></li>
                         <li><a href="#services" id="footer-service2">شحن الألعاب</a></li>
                         <li><a href="https://wa.me/message/ZAMCJ2OF2SB4A1" id="footer-service3">الدعم الفني</a></li>
-                        <li><a href="#about" id="footer-service4">الأسئلة الشائعة</a></li>
+                        <li><a href="#faq" id="footer-service4">الأسئلة الشائعة</a></li>
                         <li><a href="#" id="footer-service5">الشروط والأحكام</a></li>
                     </ul>
                 </div>
@@ -1316,13 +1502,11 @@
             </div>
         </div>
     </footer>
-
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/message/ZAMCJ2OF2SB4A1" class="whatsapp-float" target="_blank" aria-label="واتساب">
         <i class="fab fa-whatsapp"></i>
         <div class="whatsapp-tooltip">تواصل معنا الآن</div>
     </a>
-
     <script>
         // Mobile Menu Toggle
         document.querySelector('.mobile-menu').addEventListener('click', function() {
@@ -1400,6 +1584,7 @@
             "nav-link7": { ar: "التطبيق", en: "App" },
             "nav-link8": { ar: "اتصل بنا", en: "Contact Us" },
             "nav-link9": { ar: "شركاؤنا", en: "Our Partners" },
+            "nav-link10": { ar: "الأسئلة الشائعة", en: "FAQ" },
             // Transfer Button
             "transfer-btn": { ar: "ابدأ تحويل الأموال", en: "Start Money Transfer" },
             // Footer Links
@@ -1411,6 +1596,7 @@
             "footer-link6": { ar: "تقييمات العملاء", en: "Customer Reviews" },
             "footer-link7": { ar: "التطبيق", en: "App" },
             "footer-link9": { ar: "شركاؤنا", en: "Our Partners" },
+            "footer-link10": { ar: "الأسئلة الشائعة", en: "FAQ" },
             // Hero Section
             "hero-title": { ar: "بوابة الدفع الإلكتروني والشحن العالمية", en: "Global Electronic Payment & Shipping Gateway" },
             "hero-desc": { ar: "نقدم حلول دفع إلكتروني آمنة وسريعة مع خدمة شحن الألعاب لجميع دول العالم. استمتع بتجربة تسوق رقمية متكاملة مع دعم جميع طرق الدفع المحلية والعالمية.", en: "We provide secure and fast electronic payment solutions with game shipping services worldwide. Enjoy a seamless digital shopping experience with support for all local and global payment methods." },
@@ -1445,6 +1631,22 @@
             // Payment Section
             "payment-title": { ar: "طرق الدفع المدعومة", en: "Supported Payment Methods" },
             "payment-desc": { ar: "ندعم جميع طرق الدفع المحلية والعالمية الشهيرة لتوفير أقصى درجات الراحة لأعضائنا", en: "We support all popular local and global payment methods to provide the utmost convenience for our members" },
+            // FAQ Section
+            "faq-title": { ar: "الأسئلة الشائعة", en: "Frequently Asked Questions" },
+            "faq-question1": { ar: "هل يوجد شركات أخرى تتعلق بالتطبيق؟", en: "Are there other companies related to the app?" },
+            "faq-answer1": { ar: "ليس لدينا أي شركات أخرى تتعلق بشركتنا إلا إذا تم الإعلان عنها داخل التطبيق.", en: "We do not have any other companies related to our company unless announced within the app." },
+            "faq-question2": { ar: "هل يوجد وسيلة اتصال بخدمة العملاء؟", en: "Is there a way to contact customer service?" },
+            "faq-answer2": { ar: "نعم، لدينا وسيلتان للاتصال: زر الواتساب أسفل الشاشة أو زر 'المزيد' داخل التطبيق.", en: "Yes, we have two ways to contact: the WhatsApp button at the bottom of the screen or the 'More' button inside the app." },
+            "faq-question3": { ar: "ما هي مدة تنفيذ طلب المنتج الذي طلبته؟", en: "What is the delivery time for the product I ordered?" },
+            "faq-answer3": { ar: "مدة تنفيذ طلبك تستغرق 30 دقيقة كحد أقصى، وهذا يختلف من منتج لآخر.", en: "The delivery time for your order takes up to 30 minutes, and this varies from product to product." },
+            "faq-question4": { ar: "إذا كان يوجد خطأ بالمنتج أو تأخر بالتسليم، ماذا أفعل؟", en: "What should I do if there is an error with the product or a delay in delivery?" },
+            "faq-answer4": { ar: "اتصل بخدمة العملاء عبر الواتساب أو من داخل التطبيق، وسنقوم بحل المشكلة في أسرع وقت.", en: "Contact customer service via WhatsApp or from within the app, and we will solve the problem as soon as possible." },
+            "faq-question5": { ar: "هل يوجد بريد إلكتروني خاص بالشركة؟", en: "Is there a company email?" },
+            "faq-answer5": { ar: "نعم، هذا هو البريد الإلكتروني الرسمي للشركة: helpapersonality@gmail.com.", en: "Yes, this is the official company email: helpapersonality@gmail.com." },
+            "faq-question6": { ar: "هل يوجد أرقام هواتف للتواصل؟", en: "Are there phone numbers for contact?" },
+            "faq-answer6": { ar: "نعم، لدينا رقم للتواصل عبر الواتساب فقط: +201090470326.", en: "Yes, we have a WhatsApp contact number only: +201090470326." },
+            "faq-question7": { ar: "لو أنا خارج مصر وعايز أدفع اشتراك أو استخدم منتج دولي، أدفع إزاي؟", en: "If I am outside Egypt and want to pay for a subscription or use an international product, how do I pay?" },
+            "faq-answer7": { ar: "المنتجات المتاحة لجميع الدول يمكن الدفع عنها عبر باي بال أو بايير، أو التواصل مع خدمة العملاء لمعرفة المزيد.", en: "Products available for all countries can be paid for via PayPal or Payeer, or you can contact customer service for more information." },
             // Reviews Section
             "reviews-title": { ar: "تقييمات عملائنا", en: "Customer Reviews" },
             "testimonial1": { ar: "خدمتهم ممتازة جداً، تحويلات سريعة وآمنة، والدعم الفني متابع كل دقيقة. شكراً DREAM SHOPPING!", en: "Their service is excellent, fast and secure transfers, and technical support is available every minute. Thank you DREAM SHOPPING!" },
@@ -1570,8 +1772,33 @@
         document.querySelector('.partners-slider-container').addEventListener('mouseleave', () => {
             partnersSlideTimer = setInterval(nextPartnersSlide, partnersSlideInterval);
         });
+        // FAQ Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggles = document.querySelectorAll('.faq-toggle');
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    // إغلاق جميع الأسئلة الأخرى
+                    document.querySelectorAll('.faq').forEach(faq => {
+                        if (faq !== this.parentNode) {
+                            faq.classList.remove('active');
+                        }
+                    });
+                    // تبديل السؤال الحالي
+                    this.parentNode.classList.toggle('active');
+                });
+                // إضافة دعم لللمس على الهواتف
+                toggle.addEventListener('touchstart', function(e) {
+                    e.preventDefault(); // منع السلوك الافتراضي
+                    this.click(); // تشغيل حدث النقر
+                }, { passive: false });
+            });
+            // جعل النقر على العنوان يعمل مثل النقر على الزر
+            document.querySelectorAll('.faq-title').forEach(title => {
+                title.addEventListener('click', function() {
+                    this.parentNode.querySelector('.faq-toggle').click();
+                });
+            });
+        });
     </script>
 </body>
 </html>
-
-
