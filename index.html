@@ -391,6 +391,18 @@
             gap: clamp(20px, 5vw, 30px);
             text-align: center;
         }
+        .transfer-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .transfer-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
         .transfer-text h3 {
             font-size: clamp(18px, 4.5vw, 24px);
             margin-bottom: 16px;
@@ -402,6 +414,65 @@
             font-size: clamp(14px, 3.5vw, 16px);
             color: var(--text-color);
             line-height: 1.7;
+        }
+        /* Partners Section */
+        .partners {
+            background-color: var(--light-bg);
+        }
+        body.dark-mode .partners {
+            background-color: var(--dark-bg);
+        }
+        .partners-content {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .partners-content p {
+            font-size: clamp(14px, 3.5vw, 16px);
+            color: var(--text-color);
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .partners-carousel {
+            overflow: hidden;
+            position: relative;
+            padding: 20px 0;
+        }
+        .partners-track {
+            display: flex;
+            gap: 30px;
+            animation: scrollPartners 20s linear infinite;
+        }
+        .partners-track:hover {
+            animation-play-state: paused;
+        }
+        .partner-logo {
+            flex-shrink: 0;
+            background: var(--white);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            min-width: 120px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        body.dark-mode .partner-logo {
+            background: var(--dark-surface);
+        }
+        .partner-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        @keyframes scrollPartners {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
         /* Testimonials */
         .testimonials {
@@ -461,16 +532,45 @@
             gap: clamp(24px, 6vw, 36px);
             text-align: center;
         }
-        .app-image {
+        .app-slider {
             width: 100%;
             max-width: 300px;
-        }
-        .app-image img {
-            width: 100%;
-            height: auto;
+            position: relative;
             border-radius: 18px;
+            overflow: hidden;
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
             border: 6px solid white;
+        }
+        .app-slide {
+            display: none;
+            width: 100%;
+        }
+        .app-slide.active {
+            display: block;
+        }
+        .app-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+        .app-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .app-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(0, 120, 183, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .app-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
         }
         .app-text h3 {
             font-size: clamp(18px, 4.5vw, 24px);
@@ -715,6 +815,7 @@
                         <li><a href="#services" class="nav-link" id="nav-link3">خدماتنا</a></li>
                         <li><a href="#transfer" class="nav-link" id="nav-link4">تحويل الأموال</a></li>
                         <li><a href="#payment" class="nav-link" id="nav-link5">طرق الدفع</a></li>
+                        <li><a href="#partners" class="nav-link" id="nav-link9">شركاؤنا</a></li>
                         <li><a href="#reviews" class="nav-link" id="nav-link6">تقييمات العملاء</a></li>
                         <li><a href="#app" class="nav-link" id="nav-link7">التطبيق</a></li>
                         <li><a href="#contact" class="nav-link" id="nav-link8">اتصل بنا</a></li>
@@ -821,10 +922,68 @@
                 <h2 id="transfer-title">تحويل الأموال</h2>
             </div>
             <div class="transfer-content">
+                <div class="transfer-image fade-in">
+                    <img src="https://img.freepik.com/free-vector/money-transfer-concept-illustration_114360-1123.jpg" alt="تحويل الأموال">
+                </div>
                 <div class="transfer-text fade-in">
                     <h3 id="transfer-subtitle">تحويل الأموال بسهولة وأمان</h3>
                     <p id="transfer-desc">نقدم خدمة تحويل الأموال المحلية والعالمية بسرعة وأمان تام. استمتع بتحويل الأموال إلى أي مكان في العالم بكل سهولة.</p>
                     <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="btn btn-primary" id="transfer-btn">ابدأ تحويل الأموال</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Partners Section -->
+    <section class="partners" id="partners">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2 id="partners-title">شركاؤنا</h2>
+            </div>
+            <div class="partners-content fade-in">
+                <p id="partners-desc">نحن فخورون بشراكاتنا مع أكبر الشركات والمؤسسات المالية في العالم لتقديم أفضل خدمات الدفع والشحن لعملائنا الكرام.</p>
+            </div>
+            <div class="partners-carousel fade-in">
+                <div class="partners-track">
+                    <div class="partner-logo">
+                        <img src="https://f.top4top.io/p_35575e1v62.png" alt="Vodafone Cash">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://e.top4top.io/p_3557108s31.png" alt="InstaPay">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://k.top4top.io/p_3557wal7p2.png" alt="Skrill">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://l.top4top.io/p_35574t0up3.png" alt="Binance">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://j.top4top.io/p_3557wq9wk1.png" alt="Payeer">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png" alt="Bitcoin">
+                    </div>
+                    <!-- تكرار الشركاء للتكرار المستمر -->
+                    <div class="partner-logo">
+                        <img src="https://f.top4top.io/p_35575e1v62.png" alt="Vodafone Cash">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://e.top4top.io/p_3557108s31.png" alt="InstaPay">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://k.top4top.io/p_3557wal7p2.png" alt="Skrill">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://l.top4top.io/p_35574t0up3.png" alt="Binance">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://j.top4top.io/p_3557wq9wk1.png" alt="Payeer">
+                    </div>
                 </div>
             </div>
         </div>
@@ -955,8 +1114,25 @@
                 <h2 id="app-title">تطبيق DREAM SHOPPING</h2>
             </div>
             <div class="app-content">
-                <div class="app-image fade-in">
-                    <img src="https://g.top4top.io/p_3555yfk2r1.png" alt="تطبيق DREAM SHOPPING">
+                <div class="app-slider fade-in">
+                    <div class="app-slide active">
+                        <img src="https://g.top4top.io/p_3555yfk2r1.png" alt="تطبيق DREAM SHOPPING">
+                    </div>
+                    <div class="app-slide">
+                        <img src="https://i.imgur.com/5QZJZJQ.png" alt="تطبيق DREAM SHOPPING - الشاشة الرئيسية">
+                    </div>
+                    <div class="app-slide">
+                        <img src="https://i.imgur.com/7XJQZJQ.png" alt="تطبيق DREAM SHOPPING - الدفع">
+                    </div>
+                    <div class="app-slide">
+                        <img src="https://i.imgur.com/9QZJZJQ.png" alt="تطبيق DREAM SHOPPING - الشحن">
+                    </div>
+                    <div class="app-dots">
+                        <div class="app-dot active" data-index="0"></div>
+                        <div class="app-dot" data-index="1"></div>
+                        <div class="app-dot" data-index="2"></div>
+                        <div class="app-dot" data-index="3"></div>
+                    </div>
                 </div>
                 <div class="app-text fade-in">
                     <h3 id="app-subtitle">حمّل تطبيقنا الآن</h3>
@@ -995,6 +1171,7 @@
                         <li><a href="#about" id="footer-link2">من نحن</a></li>
                         <li><a href="#services" id="footer-link3">خدماتنا</a></li>
                         <li><a href="#transfer" id="footer-link4">تحويل الأموال</a></li>
+                        <li><a href="#partners" id="footer-link9">شركاؤنا</a></li>
                         <li><a href="#payment" id="footer-link5">طرق الدفع</a></li>
                         <li><a href="#reviews" id="footer-link6">تقييمات العملاء</a></li>
                         <li><a href="#app" id="footer-link7">التطبيق</a></li>
@@ -1020,7 +1197,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p id="copyright-text">جميع الحقوق محفوظ; 2018-2025 DREAM SHOPPING</p>
+                <p id="copyright-text">جميع الحقوق محفوظة ; 2018-2025 DREAM SHOPPING</p>
             </div>
         </div>
     </footer>
@@ -1105,6 +1282,7 @@
             "nav-link6": { ar: "تقييمات العملاء", en: "Customer Reviews" },
             "nav-link7": { ar: "التطبيق", en: "App" },
             "nav-link8": { ar: "اتصل بنا", en: "Contact Us" },
+            "nav-link9": { ar: "شركاؤنا", en: "Our Partners" },
             // Transfer Button
             "transfer-btn": { ar: "ابدأ تحويل الأموال", en: "Start Money Transfer" },
             // Footer Links
@@ -1115,6 +1293,7 @@
             "footer-link5": { ar: "طرق الدفع", en: "Payment Methods" },
             "footer-link6": { ar: "تقييمات العملاء", en: "Customer Reviews" },
             "footer-link7": { ar: "التطبيق", en: "App" },
+            "footer-link9": { ar: "شركاؤنا", en: "Our Partners" },
             // Hero Section
             "hero-title": { ar: "بوابة الدفع الإلكتروني والشحن العالمية", en: "Global Electronic Payment & Shipping Gateway" },
             "hero-desc": { ar: "نقدم حلول دفع إلكتروني آمنة وسريعة مع خدمة شحن الألعاب لجميع دول العالم. استمتع بتجربة تسوق رقمية متكاملة مع دعم جميع طرق الدفع المحلية والعالمية.", en: "We provide secure and fast electronic payment solutions with game shipping services worldwide. Enjoy a seamless digital shopping experience with support for all local and global payment methods." },
@@ -1143,6 +1322,9 @@
             "transfer-title": { ar: "تحويل الأموال", en: "Money Transfer" },
             "transfer-subtitle": { ar: "تحويل الأموال بسهولة وأمان", en: "Transfer Money Easily and Securely" },
             "transfer-desc": { ar: "نقدم خدمة تحويل الأموال المحلية والعالمية بسرعة وأمان تام. استمتع بتحويل الأموال إلى أي مكان في العالم بكل سهولة.", en: "We provide local and international money transfer services with speed and complete security. Enjoy transferring money anywhere in the world with ease." },
+            // Partners Section
+            "partners-title": { ar: "شركاؤنا", en: "Our Partners" },
+            "partners-desc": { ar: "نحن فخورون بشراكاتنا مع أكبر الشركات والمؤسسات المالية في العالم لتقديم أفضل خدمات الدفع والشحن لعملائنا الكرام.", en: "We are proud of our partnerships with the largest companies and financial institutions in the world to provide the best payment and shipping services to our valued customers." },
             // Payment Section
             "payment-title": { ar: "طرق الدفع المدعومة", en: "Supported Payment Methods" },
             "payment-desc": { ar: "ندعم جميع طرق الدفع المحلية والعالمية الشهيرة لتوفير أقصى درجات الراحة لأعضائنا", en: "We support all popular local and global payment methods to provide the utmost convenience for our members" },
@@ -1207,11 +1389,45 @@
             const icon = this.querySelector('i');
             icon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
         });
+
+        // App Slider
+        const slides = document.querySelectorAll('.app-slide');
+        const dots = document.querySelectorAll('.app-dot');
+        let currentSlide = 0;
+        const slideInterval = 2000; // 2 ثانية
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            let nextIndex = (currentSlide + 1) % slides.length;
+            showSlide(nextIndex);
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                showSlide(index);
+            });
+        });
+
+        // بدء التمرير التلقائي
+        let slideTimer = setInterval(nextSlide, slideInterval);
+
+        // إيقاف التمرير عند التمرير اليدوي
+        document.querySelector('.app-slider').addEventListener('mouseenter', () => {
+            clearInterval(slideTimer);
+        });
+
+        // استئناف التمرير عند مغادرة الماوس
+        document.querySelector('.app-slider').addEventListener('mouseleave', () => {
+            slideTimer = setInterval(nextSlide, slideInterval);
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
