@@ -440,7 +440,7 @@
         .partners-track {
             display: flex;
             gap: 20px;
-            animation: scrollPartners 30s linear infinite;
+            animation: scrollPartners 15s linear infinite;
             padding: 10px 0;
         }
         .partners-track:hover {
@@ -479,7 +479,7 @@
         @media (max-width: 768px) {
             .partners-track {
                 gap: 15px;
-                animation: scrollPartnersMobile 20s linear infinite;
+                animation: scrollPartnersMobile 12s linear infinite;
             }
             .partner-logo {
                 min-width: 80px;
@@ -1439,6 +1439,19 @@
         // استئناف التمرير عند مغادرة الماوس
         document.querySelector('.app-slider').addEventListener('mouseleave', () => {
             slideTimer = setInterval(nextSlide, slideInterval);
+        });
+        // Fix Partners Carousel
+        document.addEventListener('DOMContentLoaded', function() {
+            const partnersTrack = document.querySelector('.partners-track');
+            if (partnersTrack) {
+                // Clone the first few logos and append them to the end for seamless looping
+                const logos = partnersTrack.querySelectorAll('.partner-logo');
+                const firstSixLogos = Array.from(logos).slice(0, 6);
+                firstSixLogos.forEach(logo => {
+                    const clone = logo.cloneNode(true);
+                    partnersTrack.appendChild(clone);
+                });
+            }
         });
     </script>
 </body>
