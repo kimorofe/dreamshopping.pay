@@ -442,6 +442,7 @@
             gap: 20px;
             animation: scrollPartners 15s linear infinite;
             padding: 10px 0;
+            direction: rtl;
         }
         .partners-track:hover {
             animation-play-state: paused;
@@ -1440,7 +1441,7 @@
         document.querySelector('.app-slider').addEventListener('mouseleave', () => {
             slideTimer = setInterval(nextSlide, slideInterval);
         });
-        // Fix Partners Carousel
+        // Fix Partners Carousel for RTL
         document.addEventListener('DOMContentLoaded', function() {
             const partnersTrack = document.querySelector('.partners-track');
             if (partnersTrack) {
