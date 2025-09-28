@@ -514,6 +514,89 @@
             background-color: var(--primary-color);
             transform: scale(1.2);
         }
+        /* Testimonials - Improved Design */
+        .testimonials {
+            background-color: var(--light-bg);
+            padding: 60px 0;
+        }
+        body.dark-mode .testimonials {
+            background-color: var(--dark-bg);
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: var(--white);
+            padding: 24px;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 120, 183, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        body.dark-mode .testimonial-card {
+            background: var(--dark-surface);
+            border: 1px solid rgba(0, 120, 183, 0.3);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-color);
+        }
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+        }
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 18px;
+            margin: 12px 0;
+            display: flex;
+            justify-content: center;
+            gap: 3px;
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 18px;
+            font-size: clamp(15px, 3.5vw, 16px);
+            color: var(--text-color);
+            line-height: 1.7;
+            padding: 0 10px;
+            position: relative;
+        }
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 24px;
+            color: rgba(0, 120, 183, 0.3);
+            position: absolute;
+            top: -5px;
+        }
+        .testimonial-text::before {
+            left: -5px;
+        }
+        .testimonial-text::after {
+            right: -5px;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: clamp(15px, 3.8vw, 17px);
+            padding-top: 12px;
+            border-top: 1px dashed rgba(0, 120, 183, 0.3);
+            margin-top: 12px;
+        }
         /* App Section */
         .app-section {
             background: linear-gradient(135deg, #f0f7ff, #e6f2ff);
@@ -776,6 +859,9 @@
                 font-size: clamp(20px, 7vw, 30px);
             }
             .footer-content {
+                grid-template-columns: 1fr;
+            }
+            .testimonials-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1051,7 +1137,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="testimonial-text" id="testimonial1">
-                        "خدمتهم ممتازة جداً، تحويلات سريعة وآمنة، والدعم الفني متابع كل دقيقة. شكراً DREAM SHOPPING!"
+                        خدمتهم ممتازة جداً، تحويلات سريعة وآمنة، والدعم الفني متابع كل دقيقة. شكراً DREAM SHOPPING!
                     </div>
                     <div class="testimonial-author" id="testimonial1-author">أحمد محمود - القاهرة</div>
                 </div>
@@ -1064,7 +1150,7 @@
                         <i class="fas fa-star-half-alt"></i>
                     </div>
                     <div class="testimonial-text" id="testimonial2">
-                        "من أفضل الشركات اللي تعاملت معها في شحن الألعاب، الأسعار مناسبة والسرعة فائقة. أنصح الجميع بالتعامل معهم."
+                        من أفضل الشركات اللي تعاملت معها في شحن الألعاب، الأسعار مناسبة والسرعة فائقة. أنصح الجميع بالتعامل معهم.
                     </div>
                     <div class="testimonial-author" id="testimonial2-author">منى علي - الإسكندرية</div>
                 </div>
@@ -1077,7 +1163,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="testimonial-text" id="testimonial3">
-                        "الدفع الإلكتروني عندهم سهل جداً، وبتقبل كل طرق الدفع المحلية. أنا شخصياً بستخدم فودافون كاش وبتتم المعاملة في ثواني!"
+                        الدفع الإلكتروني عندهم سهل جداً، وبتقبل كل طرق الدفع المحلية. أنا شخصياً بستخدم فودافون كاش وبتتم المعاملة في ثواني!
                     </div>
                     <div class="testimonial-author" id="testimonial3-author">محمود حسن - الجيزة</div>
                 </div>
@@ -1090,7 +1176,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="testimonial-text" id="testimonial4">
-                        "التطبيق سهل جداً، وبتستطيع متابعة كل عملياتك من خلاله. الدعم الفني رد علي في أقل من 5 دقائق!"
+                        التطبيق سهل جداً، وبتستطيع متابعة كل عملياتك من خلاله. الدعم الفني رد علي في أقل من 5 دقائق!
                     </div>
                     <div class="testimonial-author" id="testimonial4-author">نورهان محمد - المنصورة</div>
                 </div>
@@ -1103,7 +1189,7 @@
                         <i class="far fa-star"></i>
                     </div>
                     <div class="testimonial-text" id="testimonial5">
-                        "الخدمة ممتازة، بس أحيانا بيكون فيه تأخير في تحويلات العملات الأجنبية. لكن بشكل عام أنا راضي جداً."
+                        الخدمة ممتازة، بس أحيانا بيكون فيه تأخير في تحويلات العملات الأجنبية. لكن بشكل عام أنا راضي جداً.
                     </div>
                     <div class="testimonial-author" id="testimonial5-author">علي محمود - بورسعيد</div>
                 </div>
@@ -1116,7 +1202,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="testimonial-text" id="testimonial6">
-                        "أفضل شركة شحن ألعاب في مصر! الأسعار مناسبة جداً، والسرعة فائقة. شكراً على الجودة!"
+                        أفضل شركة شحن ألعاب في مصر! الأسعار مناسبة جداً، والسرعة فائقة. شكراً على الجودة!
                     </div>
                     <div class="testimonial-author" id="testimonial6-author">ياسمين أحمد - الإسماعيلية</div>
                 </div>
@@ -1137,13 +1223,13 @@
                             <img src="https://g.top4top.io/p_3555yfk2r1.png" alt="تطبيق DREAM SHOPPING">
                         </div>
                         <div class="app-slide">
-                            <img src="https://i.imgur.com/5QZJZJQ.png" alt="تطبيق DREAM SHOPPING - الشاشة الرئيسية">
+                            <img src="https://e.top4top.io/p_3558946h11.png" alt="تطبيق DREAM SHOPPING - الشاشة الرئيسية">
                         </div>
                         <div class="app-slide">
-                            <img src="https://i.imgur.com/7XJQZJQ.png" alt="تطبيق DREAM SHOPPING - الدفع">
+                            <img src="https://f.top4top.io/p_3558tk3pt2.png" alt="تطبيق DREAM SHOPPING - الدفع">
                         </div>
                         <div class="app-slide">
-                            <img src="https://i.imgur.com/9QZJZJQ.png" alt="تطبيق DREAM SHOPPING - الشحن">
+                            <img src="https://g.top4top.io/p_3558q2svn3.png" alt="تطبيق DREAM SHOPPING - الشحن">
                         </div>
                     </div>
                     <div class="app-dots">
