@@ -439,8 +439,9 @@
         }
         .partners-track {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             animation: scrollPartners 20s linear infinite;
+            padding: 10px 0;
         }
         .partners-track:hover {
             animation-play-state: paused;
@@ -448,11 +449,11 @@
         .partner-logo {
             flex-shrink: 0;
             background: var(--white);
-            padding: 15px;
+            padding: 12px;
             border-radius: 12px;
             box-shadow: var(--shadow);
-            min-width: 120px;
-            height: 80px;
+            min-width: 100px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -462,7 +463,7 @@
             background: var(--dark-surface);
         }
         .partner-logo:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
         }
         .partner-logo img {
@@ -775,6 +776,16 @@
             }
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+            /* تحسين عرض شركاء على الهواتف */
+            .partners-track {
+                gap: 15px;
+                padding: 10px;
+            }
+            .partner-logo {
+                min-width: 80px;
+                height: 60px;
+                padding: 8px;
             }
         }
         /* Animations */
