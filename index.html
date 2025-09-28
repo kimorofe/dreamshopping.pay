@@ -432,52 +432,55 @@
             max-width: 90%;
             margin: 0 auto;
         }
-        .app-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: clamp(24px, 6vw, 36px);
-            text-align: center;
-        }
-        .app-slider {
+        /* Partners Slider */
+        .partners-slider-container {
             width: 100%;
             max-width: 800px;
+            margin: 0 auto;
             position: relative;
-            border-radius: 18px;
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             background: var(--white);
             padding: 20px;
         }
-        body.dark-mode .app-slider {
+        body.dark-mode .partners-slider-container {
             background: var(--dark-surface);
         }
-        .app-slide {
+        .partners-slider {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .partners-slide {
             display: none;
             width: 100%;
         }
-        .app-slide.active {
+        .partners-slide.active {
             display: block;
         }
-        .partners-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .partners-slide-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-            flex-wrap: wrap;
-            padding: 20px;
+            padding: 15px;
+        }
+        @media (max-width: 768px) {
+            .partners-slide-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
         }
         .partner-logo {
             background: var(--white);
-            padding: 12px;
+            padding: 15px;
             border-radius: 12px;
             box-shadow: var(--shadow);
-            min-width: 120px;
-            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
+            min-height: 80px;
         }
         body.dark-mode .partner-logo {
             background: var(--dark-surface);
@@ -488,16 +491,18 @@
         }
         .partner-logo img {
             max-width: 100%;
-            max-height: 100%;
+            max-height: 50px;
             object-fit: contain;
+            width: auto;
+            height: auto;
         }
-        .app-dots {
+        .slider-dots {
             display: flex;
             justify-content: center;
             gap: 8px;
             margin-top: 16px;
         }
-        .app-dot {
+        .slider-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
@@ -505,53 +510,9 @@
             cursor: pointer;
             transition: var(--transition);
         }
-        .app-dot.active {
+        .slider-dot.active {
             background-color: var(--primary-color);
             transform: scale(1.2);
-        }
-        /* Testimonials */
-        .testimonials {
-            background-color: var(--light-bg);
-        }
-        body.dark-mode .testimonials {
-            background-color: var(--dark-bg);
-        }
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: clamp(16px, 4vw, 24px);
-        }
-        .testimonial-card {
-            background: var(--white);
-            padding: clamp(20px, 5vw, 28px);
-            border-radius: var(--radius);
-            text-align: center;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
-        body.dark-mode .testimonial-card {
-            background: var(--dark-surface);
-        }
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-        .testimonial-stars {
-            color: var(--gold);
-            font-size: clamp(16px, 4vw, 20px);
-            margin: 12px 0;
-        }
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 16px;
-            font-size: clamp(14px, 3.5vw, 16px);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--primary-color);
-            font-size: clamp(15px, 3.8vw, 17px);
         }
         /* App Section */
         .app-section {
@@ -567,14 +528,18 @@
             gap: clamp(24px, 6vw, 36px);
             text-align: center;
         }
-        .app-slider {
+        .app-slider-container {
             width: 100%;
-            max-width: 300px;
+            max-width: 350px;
             position: relative;
             border-radius: 18px;
             overflow: hidden;
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-            border: 6px solid white;
+            background: var(--white);
+            padding: 15px;
+        }
+        body.dark-mode .app-slider-container {
+            background: var(--dark-surface);
         }
         .app-slide {
             display: none;
@@ -588,6 +553,8 @@
             height: auto;
             display: block;
             border-radius: 12px;
+            max-height: 500px;
+            object-fit: contain;
         }
         .app-dots {
             display: flex;
@@ -982,11 +949,11 @@
             <div class="partners-content fade-in">
                 <p id="partners-desc">نحن فخورون بشراكاتنا مع أكبر الشركات والمؤسسات المالية في العالم لتقديم أفضل خدمات الدفع والشحن لعملائنا الكرام.</p>
             </div>
-            <div class="app-content">
-                <div class="app-slider fade-in">
+            <div class="partners-slider-container fade-in">
+                <div class="partners-slider">
                     <!-- Slide 1 -->
-                    <div class="app-slide active">
-                        <div class="partners-grid">
+                    <div class="partners-slide active">
+                        <div class="partners-slide-grid">
                             <div class="partner-logo">
                                 <img src="https://f.top4top.io/p_35575e1v62.png" alt="Vodafone Cash">
                             </div>
@@ -999,8 +966,8 @@
                         </div>
                     </div>
                     <!-- Slide 2 -->
-                    <div class="app-slide">
-                        <div class="partners-grid">
+                    <div class="partners-slide">
+                        <div class="partners-slide-grid">
                             <div class="partner-logo">
                                 <img src="https://k.top4top.io/p_3557wal7p2.png" alt="Skrill">
                             </div>
@@ -1013,8 +980,8 @@
                         </div>
                     </div>
                     <!-- Slide 3 -->
-                    <div class="app-slide">
-                        <div class="partners-grid">
+                    <div class="partners-slide">
+                        <div class="partners-slide-grid">
                             <div class="partner-logo">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png" alt="Bitcoin">
                             </div>
@@ -1026,11 +993,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="app-dots">
-                        <div class="app-dot active" data-index="0"></div>
-                        <div class="app-dot" data-index="1"></div>
-                        <div class="app-dot" data-index="2"></div>
-                    </div>
+                </div>
+                <div class="slider-dots">
+                    <div class="slider-dot active" data-index="0"></div>
+                    <div class="slider-dot" data-index="1"></div>
+                    <div class="slider-dot" data-index="2"></div>
                 </div>
             </div>
         </div>
@@ -1164,18 +1131,20 @@
                 <h2 id="app-title">تطبيق DREAM SHOPPING</h2>
             </div>
             <div class="app-content">
-                <div class="app-slider fade-in">
-                    <div class="app-slide active">
-                        <img src="https://g.top4top.io/p_3555yfk2r1.png" alt="تطبيق DREAM SHOPPING">
-                    </div>
-                    <div class="app-slide">
-                        <img src="https://i.imgur.com/5QZJZJQ.png" alt="تطبيق DREAM SHOPPING - الشاشة الرئيسية">
-                    </div>
-                    <div class="app-slide">
-                        <img src="https://i.imgur.com/7XJQZJQ.png" alt="تطبيق DREAM SHOPPING - الدفع">
-                    </div>
-                    <div class="app-slide">
-                        <img src="https://i.imgur.com/9QZJZJQ.png" alt="تطبيق DREAM SHOPPING - الشحن">
+                <div class="app-slider-container fade-in">
+                    <div class="app-slider">
+                        <div class="app-slide active">
+                            <img src="https://g.top4top.io/p_3555yfk2r1.png" alt="تطبيق DREAM SHOPPING">
+                        </div>
+                        <div class="app-slide">
+                            <img src="https://i.imgur.com/5QZJZJQ.png" alt="تطبيق DREAM SHOPPING - الشاشة الرئيسية">
+                        </div>
+                        <div class="app-slide">
+                            <img src="https://i.imgur.com/7XJQZJQ.png" alt="تطبيق DREAM SHOPPING - الدفع">
+                        </div>
+                        <div class="app-slide">
+                            <img src="https://i.imgur.com/9QZJZJQ.png" alt="تطبيق DREAM SHOPPING - الشحن">
+                        </div>
                     </div>
                     <div class="app-dots">
                         <div class="app-dot active" data-index="0"></div>
@@ -1443,47 +1412,46 @@
             icon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
         });
         // App Slider
-        const slides = document.querySelectorAll('.app-slide');
-        const dots = document.querySelectorAll('.app-dot');
-        let currentSlide = 0;
-        const slideInterval = 2000; // 2 ثانية
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-            currentSlide = index;
+        const appSlides = document.querySelectorAll('.app-slide');
+        const appDots = document.querySelectorAll('.app-dot');
+        let currentAppSlide = 0;
+        const appSlideInterval = 3000; // 3 ثواني
+        function showAppSlide(index) {
+            appSlides.forEach(slide => slide.classList.remove('active'));
+            appDots.forEach(dot => dot.classList.remove('active'));
+            appSlides[index].classList.add('active');
+            appDots[index].classList.add('active');
+            currentAppSlide = index;
         }
-        function nextSlide() {
-            let nextIndex = (currentSlide + 1) % slides.length;
-            showSlide(nextIndex);
+        function nextAppSlide() {
+            let nextIndex = (currentAppSlide + 1) % appSlides.length;
+            showAppSlide(nextIndex);
         }
-        dots.forEach(dot => {
+        appDots.forEach(dot => {
             dot.addEventListener('click', () => {
                 const index = parseInt(dot.getAttribute('data-index'));
-                showSlide(index);
+                showAppSlide(index);
             });
         });
         // بدء التمرير التلقائي
-        let slideTimer = setInterval(nextSlide, slideInterval);
+        let appSlideTimer = setInterval(nextAppSlide, appSlideInterval);
         // إيقاف التمرير عند التمرير اليدوي
-        document.querySelector('.app-slider').addEventListener('mouseenter', () => {
-            clearInterval(slideTimer);
+        document.querySelector('.app-slider-container').addEventListener('mouseenter', () => {
+            clearInterval(appSlideTimer);
         });
         // استئناف التمرير عند مغادرة الماوس
-        document.querySelector('.app-slider').addEventListener('mouseleave', () => {
-            slideTimer = setInterval(nextSlide, slideInterval);
+        document.querySelector('.app-slider-container').addEventListener('mouseleave', () => {
+            appSlideTimer = setInterval(nextAppSlide, appSlideInterval);
         });
         // Partners Slider
-        const partnersSlides = document.querySelectorAll('.partners-grid');
-        const partnersDots = document.querySelectorAll('.app-dot');
+        const partnersSlides = document.querySelectorAll('.partners-slide');
+        const partnersDots = document.querySelectorAll('.slider-dot');
         let currentPartnersSlide = 0;
         const partnersSlideInterval = 3000; // 3 ثواني
         function showPartnersSlide(index) {
-            const slides = document.querySelectorAll('.app-slide');
-            slides.forEach(slide => slide.classList.remove('active'));
+            partnersSlides.forEach(slide => slide.classList.remove('active'));
             partnersDots.forEach(dot => dot.classList.remove('active'));
-            slides[index].classList.add('active');
+            partnersSlides[index].classList.add('active');
             partnersDots[index].classList.add('active');
             currentPartnersSlide = index;
         }
@@ -1500,11 +1468,11 @@
         // بدء التمرير التلقائي
         let partnersSlideTimer = setInterval(nextPartnersSlide, partnersSlideInterval);
         // إيقاف التمرير عند التمرير اليدوي
-        document.querySelector('.app-slider').addEventListener('mouseenter', () => {
+        document.querySelector('.partners-slider-container').addEventListener('mouseenter', () => {
             clearInterval(partnersSlideTimer);
         });
         // استئناف التمرير عند مغادرة الماوس
-        document.querySelector('.app-slider').addEventListener('mouseleave', () => {
+        document.querySelector('.partners-slider-container').addEventListener('mouseleave', () => {
             partnersSlideTimer = setInterval(nextPartnersSlide, partnersSlideInterval);
         });
     </script>
