@@ -1013,6 +1013,144 @@
         .fade-in:nth-child(4) { animation-delay: 0.4s; }
         .fade-in:nth-child(5) { animation-delay: 0.5s; }
         .fade-in:nth-child(6) { animation-delay: 0.6s; }
+        /* Game Recharge Section */
+        .game-recharge {
+            background: linear-gradient(135deg, #f0f7ff, #e6f2ff);
+            padding: clamp(50px, 10vh, 80px) 0;
+        }
+        body.dark-mode .game-recharge {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+        }
+        .game-recharge-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(24px, 6vw, 36px);
+            text-align: center;
+        }
+        .game-recharge-slider-container {
+            width: 100%;
+            max-width: 350px;
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            background: var(--white);
+            padding: 15px;
+        }
+        body.dark-mode .game-recharge-slider-container {
+            background: var(--dark-surface);
+        }
+        .game-recharge-slide {
+            display: none;
+            width: 100%;
+        }
+        .game-recharge-slide.active {
+            display: block;
+        }
+        .game-recharge-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            max-height: 500px;
+            object-fit: contain;
+        }
+        .game-recharge-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .game-recharge-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(0, 120, 183, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .game-recharge-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+        .game-recharge-text h3 {
+            font-size: clamp(18px, 4.5vw, 24px);
+            margin-bottom: 16px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        .game-recharge-text p {
+            margin-bottom: 16px;
+            color: var(--text-color);
+            font-size: clamp(14px, 3.5vw, 16px);
+            line-height: 1.7;
+        }
+        .game-recharge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(16px, 4vw, 24px);
+            margin-top: 30px;
+        }
+        .game-recharge-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        body.dark-mode .game-recharge-card {
+            background: var(--dark-surface);
+        }
+        .game-recharge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .game-recharge-icon {
+            width: clamp(60px, 12vw, 80px);
+            height: clamp(60px, 12vw, 80px);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .game-recharge-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .game-recharge-card h4 {
+            margin-bottom: 12px;
+            color: var(--primary-color);
+            font-size: clamp(16px, 4vw, 18px);
+            font-weight: 700;
+        }
+        .game-recharge-card p {
+            font-size: clamp(13px, 3.5vw, 15px);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .recharge-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            font-size: clamp(13px, 3.5vw, 15px);
+            cursor: pointer;
+        }
+        .recharge-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -1032,6 +1170,7 @@
                         <li><a href="#payment" class="nav-link" id="nav-link5">طرق الدفع</a></li>
                         <li><a href="#partners" class="nav-link" id="nav-link9">شركاؤنا</a></li>
                         <li><a href="#app" class="nav-link" id="nav-link7">التطبيق</a></li>
+                        <li><a href="#game-recharge" class="nav-link" id="nav-link11">شحن الألعاب</a></li>
                         <li><a href="#faq" class="nav-link" id="nav-link10">الأسئلة الشائعة</a></li>
                         <li><a href="#reviews" class="nav-link" id="nav-link6">تقييمات العملاء</a></li>
                         <li><a href="#contact" class="nav-link" id="nav-link8">اتصل بنا</a></li>
@@ -1067,7 +1206,6 @@
                 <h2 id="about-title">من نحن</h2>
             </div>
             <div class="about-content">
-                <!-- وضع الصورة مباشرة تحت العنوان -->
                 <div class="about-image fade-in">
                     <img src="https://k.top4top.io/p_3555j1qbz1.png" alt="فريق DREAM SHOPPING">
                 </div>
@@ -1252,6 +1390,135 @@
             </div>
         </div>
     </section>
+    <!-- Game Recharge Section -->
+    <section class="game-recharge" id="game-recharge">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2 id="game-recharge-title">شحن الألعاب ورصيد الهاتف</h2>
+            </div>
+            <div class="game-recharge-content">
+                <div class="game-recharge-slider-container fade-in">
+                    <div class="game-recharge-slider">
+                        <div class="game-recharge-slide active">
+                            <img src="https://e.top4top.io/p_3558946h11.png" alt="شحن الألعاب">
+                        </div>
+                        <div class="game-recharge-slide">
+                            <img src="https://g.top4top.io/p_3555yfk2r1.png" alt="شحن الألعاب - الشاشة الرئيسية">
+                        </div>
+                    </div>
+                    <div class="game-recharge-dots">
+                        <div class="game-recharge-dot active" data-index="0"></div>
+                        <div class="game-recharge-dot" data-index="1"></div>
+                    </div>
+                </div>
+                <div class="game-recharge-text fade-in">
+                    <h3 id="game-recharge-subtitle">شحن ألعابك ورصيد هاتفك بسهولة</h3>
+                    <p id="game-recharge-desc">استمتع بشحن ألعابك المفضلة ورصيد هاتفك بسرعة وأمان مع DREAM SHOPPING. اختر اللعبة أو الخدمة واضغط على "شحن الآن".</p>
+                </div>
+                <div class="game-recharge-grid">
+                    <!-- PUBG Mobile -->
+                    <div class="game-recharge-card fade-in">
+                        <div class="game-recharge-icon">
+                            <img src="https://c.top4top.io/p_355933jfr1.png" alt="PUBG Mobile">
+                        </div>
+                        <h4>ببجي موبايل</h4>
+                        <p>شحن يو سي وباقات ببجي موبايل بسرعة فائقة.</p>
+                        <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="recharge-btn" id="recharge-pubg">شحن الآن</a>
+                    </div>
+                    <!-- Free Fire -->
+                    <div class="game-recharge-card fade-in">
+                        <div class="game-recharge-icon">
+                            <img src="https://d.top4top.io/p_3559fq1ft2.png" alt="Free Fire">
+                        </div>
+                        <h4>فري فاير</h4>
+                        <p>شحن الماس وباقات فري فاير بسهولة.</p>
+                        <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="recharge-btn" id="recharge-freefire">شحن الآن</a>
+                    </div>
+                    <!-- Clash of Kings -->
+                    <div class="game-recharge-card fade-in">
+                        <div class="game-recharge-icon">
+                            <img src="https://h.top4top.io/p_3559akgnu6.png" alt="Clash of Kings">
+                        </div>
+                        <h4>انتقام السلاطين</h4>
+                        <p>شحن الذهب والموارد لانتقام السلاطين.</p>
+                        <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="recharge-btn" id="recharge-cok">شحن الآن</a>
+                    </div>
+                    <!-- Delta Force -->
+                    <div class="game-recharge-card fade-in">
+                        <div class="game-recharge-icon">
+                            <img src="https://f.top4top.io/p_3559qrvql4.png" alt="Delta Force">
+                        </div>
+                        <h4>دلتا فورس</h4>
+                        <p>شحن العملات والمعدات لدلتا فورس.</p>
+                        <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="recharge-btn" id="recharge-deltaforce">شحن الآن</a>
+                    </div>
+                    <!-- Conquerors Golden Age -->
+                    <div class="game-recharge-card fade-in">
+                        <div class="game-recharge-icon">
+                            <img src="https://i.top4top.io/p_3559pxyf67.png" alt="Conquerors Golden Age">
+                        </div>
+                        <h4>الفاتحون العصر الذهبي</h4>
+                        <p>شحن الموارد والحزم للفاتحون.</p>
+                        <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="recharge-btn" id="recharge-conquerors">شحن الآن</a>
+                    </div>
+                    <!-- Vodafone -->
+                    <div class="game-recharge-card fade-in">
+                        <div class="game-recharge-icon">
+                            <img src="https://h.top4top.io/p_3559akgnu6.png" alt="Vodafone">
+                        </div>
+                        <h4>رصيد فودافون</h4>
+                        <p>شحن رصيد فودافون بسرعة.</p>
+                        <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="recharge-btn" id="recharge-vodafone">شحن الآن</a>
+                    </div>
+                    <!-- Orange -->
+                    <div class="game-recharge-card fade-in">
+                        <div class="game-recharge-icon">
+                            <img src="https://f.top4top.io/p_3559qrvql4.png" alt="Orange">
+                        </div>
+                        <h4>رصيد اورانج</h4>
+                        <p>شحن رصيد اورانج بسهولة.</p>
+                        <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="recharge-btn" id="recharge-orange">شحن الآن</a>
+                    </div>
+                    <!-- Etisalat -->
+                    <div class="game-recharge-card fade-in">
+                        <div class="game-recharge-icon">
+                            <img src="https://g.top4top.io/p_3559njhyy5.png" alt="Etisalat">
+                        </div>
+                        <h4>رصيد اتصالات</h4>
+                        <p>شحن رصيد اتصالات بسرعة.</p>
+                        <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="recharge-btn" id="recharge-etisalat">شحن الآن</a>
+                    </div>
+                    <!-- Flex Cards -->
+                    <div class="game-recharge-card fade-in">
+                        <div class="game-recharge-icon">
+                            <img src="https://e.top4top.io/p_3559rfpz33.png" alt="Flex Cards">
+                        </div>
+                        <h4>كروت فليكس</h4>
+                        <p>شحن كروت فليكس للاتصالات.</p>
+                        <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="recharge-btn" id="recharge-flex">شحن الآن</a>
+                    </div>
+                    <!-- Free Max Cards -->
+                    <div class="game-recharge-card fade-in">
+                        <div class="game-recharge-icon">
+                            <img src="https://f.top4top.io/p_3559qrvql4.png" alt="Free Max Cards">
+                        </div>
+                        <h4>كروت فري ماكس</h4>
+                        <p>شحن كروت فري ماكس بسهولة.</p>
+                        <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="recharge-btn" id="recharge-freemax">شحن الآن</a>
+                    </div>
+                    <!-- Google Play Cards -->
+                    <div class="game-recharge-card fade-in">
+                        <div class="game-recharge-icon">
+                            <img src="https://d.top4top.io/p_3559ld5u32.png" alt="Google Play Cards">
+                        </div>
+                        <h4>بطاقات جوجل بلاي</h4>
+                        <p>شحن بطاقات جوجل بلاي بسرعة.</p>
+                        <a href="https://kimorofe.github.io/Dream-Shopping.Pay/" target="_blank" class="recharge-btn" id="recharge-googleplay">شحن الآن</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Testimonials -->
     <section class="testimonials" id="reviews">
         <div class="container">
@@ -1304,25 +1571,12 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="testimonial-text" id="testimonial4">
-                        التطبيق سهل جداً، وبتستطيع متابعة كل عملياتك من خلاله. الدعم الفني رد علي في أقل من 5 دقائق!
-                    </div>
-                    <div class="testimonial-author" id="testimonial4-author">نورهان محمد - المنصورة</div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                     </div>
-                    <div class="testimonial-text" id="testimonial5">
+                    <div class="testimonial-text" id="testimonial4">
                         الخدمة ممتازة، بس أحيانا بيكون فيه تأخير في تحويلات العملات الأجنبية. لكن بشكل عام أنا راضي جداً.
                     </div>
-                    <div class="testimonial-author" id="testimonial5-author">علي محمود - بورسعيد</div>
+                    <div class="testimonial-author" id="testimonial4-author">علي محمود - بورسعيد</div>
                 </div>
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-stars">
@@ -1332,10 +1586,10 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="testimonial-text" id="testimonial6">
+                    <div class="testimonial-text" id="testimonial5">
                         أفضل شركة شحن ألعاب في مصر! الأسعار مناسبة جداً، والسرعة فائقة. شكراً على الجودة!
                     </div>
-                    <div class="testimonial-author" id="testimonial6-author">ياسمين أحمد - الإسماعيلية</div>
+                    <div class="testimonial-author" id="testimonial5-author">ياسمين أحمد - الإسماعيلية</div>
                 </div>
             </div>
         </div>
@@ -1472,6 +1726,7 @@
                         <li><a href="#about" id="footer-link2">من نحن</a></li>
                         <li><a href="#services" id="footer-link3">خدماتنا</a></li>
                         <li><a href="#transfer" id="footer-link4">تحويل الأموال</a></li>
+                        <li><a href="#game-recharge" id="footer-link11">شحن الألعاب</a></li>
                         <li><a href="#faq" id="footer-link10">الأسئلة الشائعة</a></li>
                         <li><a href="#partners" id="footer-link9">شركاؤنا</a></li>
                         <li><a href="#payment" id="footer-link5">طرق الدفع</a></li>
@@ -1483,7 +1738,7 @@
                     <h3 id="footer-services-title">خدماتنا</h3>
                     <ul>
                         <li><a href="#services" id="footer-service1">الدفع الإلكتروني</a></li>
-                        <li><a href="#services" id="footer-service2">شحن الألعاب</a></li>
+                        <li><a href="#game-recharge" id="footer-service6">شحن الألعاب</a></li>
                         <li><a href="https://wa.me/message/ZAMCJ2OF2SB4A1" id="footer-service3">الدعم الفني</a></li>
                         <li><a href="#faq" id="footer-service4">الأسئلة الشائعة</a></li>
                         <li><a href="#" id="footer-service5">الشروط والأحكام</a></li>
@@ -1586,6 +1841,7 @@
             "nav-link8": { ar: "اتصل بنا", en: "Contact Us" },
             "nav-link9": { ar: "شركاؤنا", en: "Our Partners" },
             "nav-link10": { ar: "الأسئلة الشائعة", en: "FAQ" },
+            "nav-link11": { ar: "شحن الألعاب", en: "Game Recharge" },
             // Transfer Button
             "transfer-btn": { ar: "ابدأ تحويل الأموال", en: "Start Money Transfer" },
             // Footer Links
@@ -1598,6 +1854,7 @@
             "footer-link7": { ar: "التطبيق", en: "App" },
             "footer-link9": { ar: "شركاؤنا", en: "Our Partners" },
             "footer-link10": { ar: "الأسئلة الشائعة", en: "FAQ" },
+            "footer-link11": { ar: "شحن الألعاب", en: "Game Recharge" },
             // Hero Section
             "hero-title": { ar: "بوابة الدفع الإلكتروني والشحن العالمية", en: "Global Electronic Payment & Shipping Gateway" },
             "hero-desc": { ar: "نقدم حلول دفع إلكتروني آمنة وسريعة مع خدمة شحن الألعاب لجميع دول العالم. استمتع بتجربة تسوق رقمية متكاملة مع دعم جميع طرق الدفع المحلية والعالمية.", en: "We provide secure and fast electronic payment solutions with game shipping services worldwide. Enjoy a seamless digital shopping experience with support for all local and global payment methods." },
@@ -1632,6 +1889,10 @@
             // Payment Section
             "payment-title": { ar: "طرق الدفع المدعومة", en: "Supported Payment Methods" },
             "payment-desc": { ar: "ندعم جميع طرق الدفع المحلية والعالمية الشهيرة لتوفير أقصى درجات الراحة لأعضائنا", en: "We support all popular local and global payment methods to provide the utmost convenience for our members" },
+            // Game Recharge Section
+            "game-recharge-title": { ar: "شحن الألعاب ورصيد الهاتف", en: "Game & Mobile Recharge" },
+            "game-recharge-subtitle": { ar: "شحن ألعابك ورصيد هاتفك بسهولة", en: "Recharge Your Games & Mobile Credit Easily" },
+            "game-recharge-desc": { ar: "استمتع بشحن ألعابك المفضلة ورصيد هاتفك بسرعة وأمان مع DREAM SHOPPING. اختر اللعبة أو الخدمة واضغط على 'شحن الآن'.", en: "Enjoy recharging your favorite games and mobile credit quickly and securely with DREAM SHOPPING. Choose the game or service and click 'Recharge Now'." },
             // FAQ Section
             "faq-title": { ar: "الأسئلة الشائعة", en: "Frequently Asked Questions" },
             "faq-question1": { ar: "هل يوجد شركات أخرى تتعلق بالتطبيق؟", en: "Are there other companies related to the app?" },
@@ -1660,8 +1921,6 @@
             "testimonial4-author": { ar: "نورهان محمد - المنصورة", en: "Nourhan Mohamed - Mansoura" },
             "testimonial5": { ar: "الخدمة ممتازة، بس أحيانا بيكون فيه تأخير في تحويلات العملات الأجنبية. لكن بشكل عام أنا راضي جداً.", en: "The service is excellent, but sometimes there is a delay in foreign currency transfers. But overall, I am very satisfied." },
             "testimonial5-author": { ar: "علي محمود - بورسعيد", en: "Ali Mahmoud - Port Said" },
-            "testimonial6": { ar: "أفضل شركة شحن ألعاب في مصر! الأسعار مناسبة جداً، والسرعة فائقة. شكراً على الجودة!", en: "The best game shipping company in Egypt! The prices are very reasonable, and the speed is amazing. Thank you for the quality!" },
-            "testimonial6-author": { ar: "ياسمين أحمد - الإسماعيلية", en: "Yasmin Ahmed - Ismailia" },
             // App Section
             "app-title": { ar: "تطبيق DREAM SHOPPING", en: "DREAM SHOPPING App" },
             "app-subtitle": { ar: "حمّل تطبيقنا الآن", en: "Download Our App Now" },
@@ -1681,6 +1940,7 @@
             "footer-service3": { ar: "الدعم الفني", en: "Technical Support" },
             "footer-service4": { ar: "الأسئلة الشائعة", en: "FAQ" },
             "footer-service5": { ar: "الشروط والأحكام", en: "Terms & Conditions" },
+            "footer-service6": { ar: "شحن الألعاب", en: "Game Recharge" },
             "footer-contact-title": { ar: "اتصل بنا", en: "Contact Us" },
             "footer-contact1": { ar: "البريد الإلكتروني: helpapersonality@gmail.com", en: "Email: helpapersonality@gmail.com" },
             "footer-contact2": { ar: "الهاتف: +01090470326", en: "Phone: +01090470326" },
@@ -1773,6 +2033,38 @@
         document.querySelector('.partners-slider-container').addEventListener('mouseleave', () => {
             partnersSlideTimer = setInterval(nextPartnersSlide, partnersSlideInterval);
         });
+        // Game Recharge Slider
+        const gameRechargeSlides = document.querySelectorAll('.game-recharge-slide');
+        const gameRechargeDots = document.querySelectorAll('.game-recharge-dot');
+        let currentGameRechargeSlide = 0;
+        const gameRechargeSlideInterval = 3000; // 3 ثواني
+        function showGameRechargeSlide(index) {
+            gameRechargeSlides.forEach(slide => slide.classList.remove('active'));
+            gameRechargeDots.forEach(dot => dot.classList.remove('active'));
+            gameRechargeSlides[index].classList.add('active');
+            gameRechargeDots[index].classList.add('active');
+            currentGameRechargeSlide = index;
+        }
+        function nextGameRechargeSlide() {
+            let nextIndex = (currentGameRechargeSlide + 1) % gameRechargeSlides.length;
+            showGameRechargeSlide(nextIndex);
+        }
+        gameRechargeDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                showGameRechargeSlide(index);
+            });
+        });
+        // بدء التمرير التلقائي
+        let gameRechargeSlideTimer = setInterval(nextGameRechargeSlide, gameRechargeSlideInterval);
+        // إيقاف التمرير عند التمرير اليدوي
+        document.querySelector('.game-recharge-slider-container').addEventListener('mouseenter', () => {
+            clearInterval(gameRechargeSlideTimer);
+        });
+        // استئناف التمرير عند مغادرة الماوس
+        document.querySelector('.game-recharge-slider-container').addEventListener('mouseleave', () => {
+            gameRechargeSlideTimer = setInterval(nextGameRechargeSlide, gameRechargeSlideInterval);
+        });
         // FAQ Toggle
         document.addEventListener('DOMContentLoaded', function() {
             const toggles = document.querySelectorAll('.faq-toggle');
@@ -1803,4 +2095,3 @@
     </script>
 </body>
 </html>
-
